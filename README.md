@@ -154,5 +154,5 @@ To clone this project from Github:
 
 ## Media 
 - [Colour Palette](https://www.color-hex.com/color-palette/109374)
-
-### Feature Image Sources:
+- [Favicon-generator](https://realfavicongenerator.net/)
+- [Favicon-image](https://png.pngtree.com/png-vector/20220217/ourmid/pngtree-flat-vector-of-black-hangmans-noose-for-suicide-or-lynching-vector-png-image_44501344.jpg)
