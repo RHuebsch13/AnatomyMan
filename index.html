@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnatomyMan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/syle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+    
+</head>
+<body>
+ <!--credit for all navbars, including corresponding css: Whiskey Drop project - Code Institute.-->
+    <nav class="navbar navbar-dark navbar-expand-sm bg-dark">
+        <a href="index.html" class="navbar-brand">AnatomyMan</a>
+
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbardown"
+            aria-controls="navbardown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
+
+        <div class="collapse navbar-collapse" id="navbardown">
+            <ul class="navbar-nav ml-auto">
+                <li class="active nav-item mr-2"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item ml-2"><a class="nav-link" href="instructions.html">How To Play</a></li>
+            </ul>
+        </div>
+    </nav>
+
+      <div class="game-end">
+        <div class="content">
+           <h4>Game Over!</h4> 
+           <p>The word was: <b>frontal</b> </p>
+           <button class="new-game">Try Again</button>
+
+        </div>
+      </div>
+      <div class = "inner-box">
+          <div class = "hangman-box">
+             <img src = "assets/images/hangman-0.svg" alt="empty-hangman-img">
+          </div>
+
+          <div class="game-box">
+            <div class="game-word"> 
+                <!-- letters of the word will be populated by JavaScript -->
+            </div>
+              <h4 class="wrong-answers">
+                  <small>Incorrect:</small>
+                  <small><b>0 / 10</b></small>
+              </h4>
+              <h4 class="right-answers">
+                <small>Correct:</small>
+                <small><b>0 / 10</b></small>
+              </h4>
+          </div>
+        </div>
+
+        <div class = "hint">
+            <div class ="hint-content">
+               <h4 class = "hint-label">Hint:</h4>
+               <b class = "clue">place holder text</b>
+           </div>
+        </div> 
+
+
+
+    <script src="scripts/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

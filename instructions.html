@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnatomyMan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/syle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark navbar-expand-sm bg-dark">
+        <a href="index.html" class="navbar-brand">AnatomyMan</a>
+
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbardown"
+            aria-controls="navbardown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
+
+        <div class="collapse navbar-collapse" id="navbardown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-2"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="active nav-item ml-2"><a class="nav-link" href="instructions.html">How To Play</a></li>
+            </ul>
+        </div>
+            
+    </nav>
+    
+    <section>
+        <div class = "text-center" id="objectives">
+            <h1>Game Objectives</h1>
+            <p>The object of hangman is to guess the secret word before the stick figure is hung, or before you run out of time.</p>
+            <p>The words are terms linked to Anatomy and this game can be used as a study tool .</p>
+        </div>
+
+        <div class = "text-center" id="rules">
+            <h1>Let's Play!</h1>
+            <p>The game will start automatically. There will be a simple hint, that gives you a clue about the word you have to guess.</p>
+            <p>A score of your correct and incorrect answers is talled and displayed. A timer will count down from 5 minutes. </p>
+            <p>Guess the letters that you think fit in the word, if the letter you guessed is apart of the word, it will go green and will not be able to be remove.</p>
+            <p>If the letter you guessed does not belong in the word, a part of the stick man will appear on the hangman platform.</p>
+            <p>If you make too many wrong guesses, your stick man will be hanged and that is Game Over.</p>
+            <p>If you run out of time before guessing the word, it is also Game Over.</p>
+            <p>When the timer reaches 1 minute, you can tell you are running out of time because the white block will turn red.</p>
+            <p>You can reset the game at any point by clicking the 'Reset' button.</p>
+        </div>
+    </section>
+
+    <section class = "text-center" id="feedback">
+        <p>Let us know how you liked the game!</p>
+        <form id="ratingForm">
+            <span class="fa fa-star checked" onclick="rateStar(1)"></span>
+            <span class="fa fa-star checked" onclick="rateStar(2)"></span>
+            <span class="fa fa-star checked" onclick="rateStar(3)"></span>
+            <span class="fa fa-star" onclick="rateStar(4)"></span>
+            <span class="fa fa-star" onclick="rateStar(5)"></span>
+            <input type="hidden" name="rating" id="ratingInput" value="3">
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
+
