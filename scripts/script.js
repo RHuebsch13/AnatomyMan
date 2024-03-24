@@ -1,9 +1,5 @@
-// word to be guessed with hints
+// Define the guessList array
 let guessList = [
-    {
-        word: "bursa",
-        hint: "connective tissue sac containing lubricating fluid"
-    },
     {
         word: "lacteal",
         hint: "lymphatic capillary in the villi"
@@ -21,14 +17,6 @@ let guessList = [
         hint: "single bone of the upper arm"
     },
     {
-        word: "pleura",
-        hint: "serous membrane that lines the pleural cavity and covers the lungs"
-    },
-    {
-        word: "acinus",
-        hint: "cluster of glandular epithelial cells in the pancreas"
-    },
-    {
         word: "lateral",
         hint: "to the side of, or away from, the middle of the body"
     },
@@ -40,78 +28,75 @@ let guessList = [
         word: "fimbria",
         hint: "finger-like projections on the ends of your fallopian tubes closest to your ovaries (singular form)"
     },
-    {
-        word: "aorta",
-        hint: "largest artery in the body"
-    },
-    {
-        word: "cell",
-        hint: "smallest independently functioning unit of all organisms"
-    }
-
 ];
 
-function updateHint() {
-    // Randomly select a hint from guessList
-    let randomWord = Math.floor(Math.random() * guessList.length);
-    let randomHint = guessList[randomWord].hint;
+// Function to select a random word from guessList and populate the hint and game-word elements
+function selectRandomWord() {
+    // Get a random index within the range of guessList array length
+    const randomIndex = Math.floor(Math.random() * guessList.length);
+    // Get the randomly selected word object
+    const selectedWord = guessList[randomIndex];
+    
+    // Populate the hint
+    const hintElement = document.querySelector('.clue');
+    hintElement.textContent = selectedWord.hint;
 
-    // Update the HTML content with the selected hint
-    document.querySelector('.clue').textContent = randomHint;
+    // Clear previous content of game-word
+    const gameWordElement = document.querySelector('.game-word');
+    gameWordElement.innerHTML = '';
 
-    // Update the game word length
-    let gameWord = guessList[randomWord].word;
-    let gameWordLength = gameWord.length;
-    let gameWordContainer = document.querySelector('.game-word');
-
-    // Clear previous content
-    gameWordContainer.innerHTML = '';
-
-    // Populate with spans for each letter
-    for (let i = 0; i < gameWordLength; i++) {
-        let letterSpan = document.createElement('span');
-        letterSpan.classList.add('letter');
-        gameWordContainer.appendChild(letterSpan);
-    }
+    // Split the word into individual letters and create input elements for each letter
+    selectedWord.word.split('').forEach(letter => {
+        const inputElement = document.createElement('input');
+        inputElement.setAttribute('type', 'text');
+        inputElement.classList.add('letter');
+        inputElement.maxLength = 1; // Set max length to 1
+        inputElement.dataset.letter = letter; // Store the correct letter as data attribute
+        inputElement.addEventListener('input', handleInput); // Add event listener for input
+        gameWordElement.appendChild(inputElement);
+    });
 }
 
-// Call the function initially to set a random hint and populate the game word length
-updateHint();
+// Define a variable to track the number of incorrect guesses
+let incorrectGuesses = 0;
 
-
-//correct letter and wrong guess letters
-function compareLetter(letter) {
-    // Get the current game word
-    let gameWord = document.querySelector('.game-word').textContent;
+// Function to handle user input
+function handleInput(event) {
+    const enteredLetter = event.target.value.toLowerCase(); // Get the entered letter in lowercase
+    const correctLetter = event.target.dataset.letter.toLowerCase(); // Get the correct letter from data attribute
     
-    // Convert the game word to lowercase for case-insensitive comparison
-    gameWord = gameWord.toLowerCase();
-
-    // Check if the pressed letter exists in the game word
-    let letterFound = false;
-    for (let i = 0; i < gameWord.length; i++) {
-        if (gameWord[i] === letter.toLowerCase()) {
-            // If the letter matches, update the corresponding span with the letter and add an id of 'correct'
-            let letterSpan = document.querySelectorAll('.letter')[i];
-            letterSpan.textContent = gameWord[i];
-            letterSpan.id = 'correct';
-            letterFound = true;
+    // Store the incorrect letter before clearing the input field
+    const incorrectLetter = event.target.value;
+    
+    // Check if the entered letter matches the correct letter
+    if (enteredLetter === correctLetter) {
+        // Add the #correct ID to the input field
+        event.target.setAttribute('id', 'correct');
+        // Disable the input field
+        event.target.disabled = true;
+        // Move focus to the next input field
+        const nextInput = event.target.nextElementSibling;
+        if (nextInput) {
+            nextInput.focus();
         }
+    } else {
+        // Increment the number of incorrect guesses
+        incorrectGuesses++;
+        // Replace the hangman image based on the number of incorrect guesses
+        const hangmanImg = document.querySelector('.hangman-box img');
+        hangmanImg.setAttribute('src', `assets/images/hangman-${incorrectGuesses}.svg`);
+
+        // Set the input field value back to the incorrect letter
+        event.target.value = incorrectLetter;
+        // Display a pop-up alert for incorrect letter
+        setTimeout(() => {
+            alert("Incorrect letter. Please try again.");
+            // Clear the input field for incorrect letter after a short delay
+            setTimeout(() => {
+                event.target.value = '';
+            }, 100);
+        }, 0); // Set a timeout of 0 to ensure the alert is shown after the incorrect letter is visible
     }
-
-    // If the letter is not found in the game word, handle it as a wrong answer
-    if (!letterFound) {
-        handleWrongAnswer();
-    }
-};
-
-
-
-//score
-
-//timer
-
-//you lose
-//you win
+}
 
 
