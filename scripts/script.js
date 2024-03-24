@@ -1,4 +1,3 @@
-// Define the guessList array
 let guessList = [
     {
         word: "lacteal",
@@ -30,119 +29,124 @@ let guessList = [
     },
 ];
 
-// Variable to track the number of incorrect guesses
-let incorrectGuesses = 0;
+let incorrectGuesses = 0; // stores incorrect guesses made by the player.
+let correctGuesses = 0; // stores correct guesses made by the player.
+let totalCorrectGuesses = 0; // adds the total correct guesses per game.
+let totalIncorrectGuesses = 0; // adds the total incorrect guesses per game.
 
-// Function to select a random word from guessList and populate the hint and game-word elements
+// randomly selects a word and hint from guessList
 function selectRandomWord() {
-    // Reset the number of incorrect guesses
-    incorrectGuesses = 0;
-    
-    // Get a random index within the range of guessList array length
+    incorrectGuesses = 0; // clears incorrect guesses for a new word selection.
+
     const randomIndex = Math.floor(Math.random() * guessList.length);
-    // Get the randomly selected word object
     const selectedWord = guessList[randomIndex];
-    
-    // Populate the hint
+
+    // shows the hint for the selected word.
     const hintElement = document.querySelector('.clue');
     hintElement.textContent = selectedWord.hint;
 
-    // Clear previous content of game-word
+    // shows input elements for each letter of the selected word.
     const gameWordElement = document.querySelector('.game-word');
     gameWordElement.innerHTML = '';
 
-    // Split the word into individual letters and create input elements for each letter
-    selectedWord.word.split('').forEach(letter => {
+    selectedWord.word.split('').forEach(function(letter) {
         const inputElement = document.createElement('input');
         inputElement.setAttribute('type', 'text');
         inputElement.classList.add('letter');
-        inputElement.maxLength = 1; // Set max length to 1
-        inputElement.dataset.letter = letter; // Store the correct letter as data attribute
-        inputElement.addEventListener('input', handleInput); // Add event listener for input
+        inputElement.maxLength = 1;
+        inputElement.dataset.letter = letter;
+        inputElement.addEventListener('input', handleInput);
         gameWordElement.appendChild(inputElement);
     });
-    
-    // Display the initial hangman image
+
+    // shows hangman image according to incorrect guesses.
     displayHangman(incorrectGuesses);
 
-     // Update the paragraph with the selected word
-     const wordParagraph = document.querySelector('.game-end p b');
-     wordParagraph.textContent = selectedWord.word;
+    // shows the selected word, if user runs out of guesses.
+    const wordParagraph = document.querySelector('.game-end p b');
+    wordParagraph.textContent = selectedWord.word;
 }
 
-// Function to handle user input
+// handles player's input for guessing letters.
 function handleInput(event) {
-    const enteredLetter = event.target.value.toLowerCase(); // Get the entered letter in lowercase
-    const correctLetter = event.target.dataset.letter.toLowerCase(); // Get the correct letter from data attribute
-    
-    // Store the incorrect letter before clearing the input field
-    const incorrectLetter = event.target.value;
-    
-    // Check if the entered letter matches the correct letter
+    const enteredLetter = event.target.value.toLowerCase(); // letter entered by the player.
+    const correctLetter = event.target.dataset.letter.toLowerCase(); // correct letter to compare.
+
+    const incorrectLetter = event.target.value; // incorrect letter entered by the player.
+
+    // if the entered letter is correct.
     if (enteredLetter === correctLetter) {
-        // Add the #correct ID to the input field
+        // shows the input as correct, disabling it, and move to the next input.
         event.target.setAttribute('id', 'correct');
-        // Disable the input field
         event.target.disabled = true;
-        // Move focus to the next input field
         const nextInput = event.target.nextElementSibling;
         if (nextInput) {
             nextInput.focus();
         }
-        
-        // Check if all letters have been guessed correctly
-        const allCorrect = [...document.querySelectorAll('.game-word .letter')].every(letterInput => letterInput.disabled);
+
+        // checks if all letters are correct, then selects a new word.
+        const allCorrect = Array.from(document.querySelectorAll('.game-word .letter')).every(function(letterInput) {
+            return letterInput.disabled;
+        });
         if (allCorrect) {
-            // Call function to select a new random word
-            selectRandomWord();
+            selectRandomWord(); // new word.
+            document.querySelector('.game-yay').style.display = 'flex'; // shows you-win message.
+            document.querySelector('.game-yay').style.justifyContent = 'center';
+            document.querySelector('.game-yay').style.alignItems = 'center';
+            totalCorrectGuesses++; // increments total correct guesses.
+            document.querySelector('.right-answers b').textContent = totalCorrectGuesses; // Updates score.
         }
-    } else {
-        // Increment the number of incorrect guesses
-        incorrectGuesses++;
-        // Replace the hangman image based on the number of incorrect guesses
-        displayHangman(incorrectGuesses);
-        
-        // Check if maximum incorrect guesses reached
+    } else { // if the entered letter is incorrect.
+        incorrectGuesses++; // incrementing incorrect guesses.
+        displayHangman(incorrectGuesses); // updating hangman image.
+
+        // if the max incorrect guesses reached.
         if (incorrectGuesses >= 6) {
-            // Delay showing game over message to display the last hangman image
-            setTimeout(() => {
-                // Display game over message
-                document.querySelector('.game-end').style.display = 'flex';
-                document.querySelector('.game-end').style.justifyContent = 'center'; // Center horizontally
-                document.querySelector('.game-end').style.alignItems = 'center'; // Center vertically
-            }, 500); // Delay for 500 milliseconds (adjust as needed)
-        } else {
-            // Set the input field value back to the incorrect letter
-            event.target.value = incorrectLetter;
-            // Display a pop-up alert for incorrect letter
-            setTimeout(() => {
-                alert("Incorrect letter. Please try again.");
-                // Clear the input field for incorrect letter after a short delay
-                setTimeout(() => {
-                    event.target.value = '';
+            setTimeout(function() {
+                document.querySelector('.game-end').style.display = 'flex'; // shows game-over message.
+                document.querySelector('.game-end').style.justifyContent = 'center';
+                document.querySelector('.game-end').style.alignItems = 'center';
+                totalIncorrectGuesses++; // incrementing total incorrect guesses.
+                document.querySelector('.wrong-answers b').textContent = totalIncorrectGuesses; // updates score.
+            }, 500);
+        } else { // haven't reached max incorrect guesses.
+            event.target.value = incorrectLetter; // shows incorrect letter.
+            setTimeout(function() {
+                alert("Incorrect letter. Please try again."); // pop up alert.
+                setTimeout(function() {
+                    event.target.value = ''; // Clear input.
                 }, 100);
-            }, 0); // Set a timeout of 0 to ensure the alert is shown after the incorrect letter is visible
+            }, 0);
         }
     }
 }
 
-// Function to display the hangman image
+// replace hangman image for incorrect guesses.
 function displayHangman(incorrectGuesses) {
-    // Get the hangman image element
     const hangmanImg = document.querySelector('.hangman-box img');
-    // Set the source of the hangman image based on the number of incorrect guesses
     hangmanImg.setAttribute('src', `assets/images/hangman-${incorrectGuesses}.svg`);
 }
 
-// Call the function to initially populate the page with a random word
-selectRandomWord();
+selectRandomWord(); // start the game with a randomly selected word.
 
-// Event listener for "Try Again" button
-document.querySelector('.new-game').addEventListener('click', () => {
-    // Hide the game-end div
-    document.querySelector('.game-end').style.display = 'none';
-    // Call the function to select another random word
-    selectRandomWord();
+// event listeners for new game buttons to reset the game.
+document.querySelectorAll('.new-game').forEach(function(button) {
+    button.addEventListener('click', function() {
+        document.querySelector('.game-end').style.display = 'none'; // hide game-over message.
+        selectRandomWord(); // new word
+        resetGame(); 
+    });
 });
 
-
+// Resets the game state.
+function resetGame() {
+    document.querySelector('.game-yay').style.display = 'none'; // hide you-win message.
+    incorrectGuesses = 0; // reset incorrect guesses.
+    displayHangman(incorrectGuesses); // reset hangman display.
+    const letterInputs = document.querySelectorAll('.game-word .letter');
+    letterInputs.forEach(function(input) {
+        input.removeAttribute('id'); // remove styling for correct guesses.
+        input.disabled = false; // enable input fields.
+        input.value = ''; // clear input fields.
+    });
+}

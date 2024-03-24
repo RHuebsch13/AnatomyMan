@@ -125,7 +125,7 @@ button[type="submit"]:hover {
     background-color: #f0f14e;
 }
 
-/*----------------------------------------------------------------------------------game over pop-up--------------*/
+/*----------------------------------------------------------------------------------pop-ups and buttons--------------*/
 .game-end{
     position: fixed;
     left: 0;
@@ -168,9 +168,53 @@ button[type="submit"]:hover {
 }
 
 .game-end button:hover{
+    background-color: #ed3833;
+}
+
+.game-yay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center ;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.game-yay .content{
+    background-color: #fff;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.game-yay h4{
+    font-size: 1.5rem;
+    color: #1645f5;
+}
+
+.game-yay button {
+    padding: 10px 23px;
+}
+
+.game-yay button:hover{
     background-color: #6ded8a;
 }
 
+.reset {
+    padding: 10px 23px;
+    background-color: #6ded8a;
+    float: right;
+}
+
+.reset:hover{
+    background-color: #ed3833;
+}
 @media only screen and (min-width: 577px) and (max-width: 768px) {
     .game-word .letter {
         width: 30px;
