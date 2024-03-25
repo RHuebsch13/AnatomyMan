@@ -29,6 +29,58 @@ let guessList = [
         word: "fimbria",
         hint: "finger-like projections on the ends of your fallopian tubes closest to your ovaries (singular form)"
     },
+    {
+        word: "telogen",
+        hint: "resting phase of the hair growth cycle"
+    },
+    {
+        word: "malleus",
+        hint: " ossicle that is directly attached to the tympanic membrane"
+    },
+    {
+        word: "saccule",
+        hint: "structure of the inner ear responsible for transducing linear acceleration in the vertical plane"
+    },
+    {
+        word: "tetanus",
+        hint: "a continuous fused contraction"
+    },
+    {
+        word: "gingiva",
+        hint: "gum"
+    },
+    {
+        word: "papilla",
+        hint: "a bump-like projection on the surface of the tongue that contains taste buds"
+    },
+    {
+        word: "forearm",
+        hint: "region of the upper limb located between the elbow and wrist joints"
+    },
+    {
+        word: "heparin",
+        hint: "anticoagulant stored in mast cells and released when tissues are injured"
+    },
+    {
+        word: "incisor",
+        hint: "chisel-shaped tooth used for cutting into food"
+    },
+    {
+        word: "jugular",
+        hint: "blood vessel that brings blood from the head and neck"
+    },
+    {
+        word: "nephron",
+        hint: "functional units of the kidney that carry out all filtration and modification to produce urine"
+    },
+    {
+        word: "oogonia",
+        hint: "ovarian stem cells that undergo mitosis during female foetal development to form primary oocytes"
+    },
+    {
+        word: "patella",
+        hint: "kneecap"
+    },
 ];
 
 let incorrectGuesses = 0; // stores incorrect guesses made by the player.
@@ -154,23 +206,23 @@ function newRound() {
 }
 
 document.querySelector('.reset').addEventListener('click', function() {
-    // Display confirmation pop-up
+    // confirmation pop-up
     const confirmed = window.confirm("Are you sure you want to start a new game?");
     if (confirmed) {
-        // Hide game-over and you-win messages.
+        // hide game-over and you-win messages.
         document.querySelector('.game-end').style.display = 'none';
         document.querySelector('.game-yay').style.display = 'none';
 
-        // Reset scores to zero.
+        // reset scores to zero.
         totalCorrectGuesses = 0;
         totalIncorrectGuesses = 0;
         document.querySelector('.right-answers b').textContent = totalCorrectGuesses;
         document.querySelector('.wrong-answers b').textContent = totalIncorrectGuesses;
 
-        // Start a new round with a randomly selected word.
+        // new round with a randomly selected word.
         newRound();
     } else {
-        // User clicked cancel, do nothing.
+        // will do nothing.
     }
 });
 });
