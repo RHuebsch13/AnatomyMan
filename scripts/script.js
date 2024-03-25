@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function() {
+// list of words to be used in the game
 let guessList = [
     {
         word: "lacteal",
@@ -130,16 +132,16 @@ function displayHangman(incorrectGuesses) {
 selectRandomWord(); // start the game with a randomly selected word.
 
 // event listeners for new game buttons to reset the game.
-document.querySelectorAll('.new-game').forEach(function(button) {
+document.querySelectorAll('.new-round').forEach(function(button) {
     button.addEventListener('click', function() {
         document.querySelector('.game-end').style.display = 'none'; // hide game-over message.
         selectRandomWord(); // new word
-        resetGame(); 
+        newRound(); 
     });
 });
 
-// Resets the game state.
-function resetGame() {
+// resets game for next word.
+function newRound() {
     document.querySelector('.game-yay').style.display = 'none'; // hide you-win message.
     incorrectGuesses = 0; // reset incorrect guesses.
     displayHangman(incorrectGuesses); // reset hangman display.
@@ -150,3 +152,25 @@ function resetGame() {
         input.value = ''; // clear input fields.
     });
 }
+
+document.querySelector('.reset').addEventListener('click', function() {
+    // Display confirmation pop-up
+    const confirmed = window.confirm("Are you sure you want to start a new game?");
+    if (confirmed) {
+        // Hide game-over and you-win messages.
+        document.querySelector('.game-end').style.display = 'none';
+        document.querySelector('.game-yay').style.display = 'none';
+
+        // Reset scores to zero.
+        totalCorrectGuesses = 0;
+        totalIncorrectGuesses = 0;
+        document.querySelector('.right-answers b').textContent = totalCorrectGuesses;
+        document.querySelector('.wrong-answers b').textContent = totalIncorrectGuesses;
+
+        // Start a new round with a randomly selected word.
+        newRound();
+    } else {
+        // User clicked cancel, do nothing.
+    }
+});
+});
