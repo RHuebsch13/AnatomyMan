@@ -125,6 +125,18 @@ button[type="submit"]:hover {
     background-color: #f0f14e;
 }
 
+#ratingInput{
+    width: 200px;
+    height: 100px;
+    border: 1px solid #fff;
+    margin: 10px;
+    text-align: center;
+}
+
+.checked{
+    color: #f0f14e;
+}
+
 /*----------------------------------------------------------------------------------pop-ups and buttons--------------*/
 .game-end{
     position: fixed;
@@ -215,6 +227,7 @@ button[type="submit"]:hover {
 .reset:hover{
     background-color: #ed3833;
 }
+
 @media only screen and (min-width: 577px) and (max-width: 768px) {
     .game-word .letter {
         width: 30px;

@@ -49,16 +49,23 @@
         </div>
     </section>
 
+   <!--credit for html and css layout for star rating,  .--> 
     <section class = "text-center" id="feedback">
         <p>Let us know how you liked the game!</p>
         <form id="ratingForm">
-            <span class="fa fa-star checked" onclick="rateStar(1)"></span>
-            <span class="fa fa-star checked" onclick="rateStar(2)"></span>
-            <span class="fa fa-star checked" onclick="rateStar(3)"></span>
-            <span class="fa fa-star" onclick="rateStar(4)"></span>
-            <span class="fa fa-star" onclick="rateStar(5)"></span>
-            <input type="hidden" name="rating" id="ratingInput" value="3">
-            <button type="submit">Submit</button>
+            <div>
+              <span class="fa fa-star" onclick="rateStar(1)" ></span>
+              <span class="fa fa-star" onclick="rateStar(2)"></span>
+              <span class="fa fa-star" onclick="rateStar(3)"></span>
+              <span class="fa fa-star" onclick="rateStar(4)"></span>
+              <span class="fa fa-star" onclick="rateStar(5)"></span>
+            </div>
+            <div>
+             <input type="text" name="rating" id="ratingInput" placeholder="Your feedback">
+            </div>
+            <div>
+             <button type="submit">Submit</button>
+            </div>
         </form>
     </section>
 
