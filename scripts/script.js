@@ -227,20 +227,29 @@ document.querySelector('.reset').addEventListener('click', function() {
 });
 });
 
+//instructions page, interactive star rating
+let currentRating = 0;
+
 function rateStar(rating) {
-    // Remove 'checked' class from all stars
-    var stars = document.getElementsByClassName('fa-star');
-    for (var i = 0; i < stars.length; i++) {
-        stars[i].classList.remove('checked');
+    currentRating = rating;
+    highlightStars(rating);
+    let ratingText = rating + " star"; 
+    if (rating !== 1) {
+        ratingText += "s"; // For plural if rating is not 1
     }
-
-    // Add 'checked' class to clicked star and preceding stars
-    for (var i = 0; i < rating; i++) {
-        stars[i].classList.add('checked');
-    }
-
-    // Set the value of the rating input
-    document.getElementById('ratingInput').value = rating;
+    document.getElementById("ratingInput").value = ratingText; // Update the feedback box
 }
 
+function highlightStars(rating) {
+    let stars = document.getElementsByClassName("fa-star");
+    for (let i = 0; i < stars.length; i++) {
+        if (i < rating) {
+            stars[i].classList.add("checked");
+        } else {
+            stars[i].classList.remove("checked");
+        }
+    }
+}
+ 
 
+    

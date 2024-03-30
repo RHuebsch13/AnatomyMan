@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
 </head>
 <body>
 
@@ -32,19 +35,17 @@
     <section>
         <div class = "text-center" id="objectives">
             <h1>Game Objectives</h1>
-            <p>The object of hangman is to guess the secret word before the stick figure is hung, or before you run out of time.</p>
+            <p>The object of hangman is to guess the secret word before the stick figure is hung.</p>
             <p>The words are terms linked to Anatomy and this game can be used as a study tool .</p>
         </div>
 
         <div class = "text-center" id="rules">
             <h1>Let's Play!</h1>
             <p>The game will start automatically. There will be a simple hint, that gives you a clue about the word you have to guess.</p>
-            <p>A score of your correct and incorrect answers is talled and displayed. A timer will count down from 5 minutes. </p>
-            <p>Guess the letters that you think fit in the word, if the letter you guessed is apart of the word, it will go green and will not be able to be remove.</p>
+            <p>A score of your correct and incorrect answers will tally and be displayed.</p>
+            <p>Guess the letters that you think fits in the word, if the letter you guessed is apart of the word, it will go green and will not be able to be chnaged.</p>
             <p>If the letter you guessed does not belong in the word, a part of the stick man will appear on the hangman platform.</p>
             <p>If you make too many wrong guesses, your stick man will be hanged and that is Game Over.</p>
-            <p>If you run out of time before guessing the word, it is also Game Over.</p>
-            <p>When the timer reaches 1 minute, you can tell you are running out of time because the white block will turn red.</p>
             <p>You can reset the game at any point by clicking the 'Reset' button.</p>
         </div>
     </section>
@@ -61,7 +62,7 @@
               <span class="fa fa-star" onclick="rateStar(5)"></span>
             </div>
             <div>
-             <input type="text" name="rating" id="ratingInput" placeholder="Your feedback">
+             <input type="text" name="feedback" id="ratingInput" placeholder="Your feedback">
             </div>
             <div>
              <button type="submit">Submit</button>
@@ -69,7 +70,7 @@
         </form>
     </section>
 
-    <script src="assets/js/script.js"></script>
+    <script src="scripts/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
