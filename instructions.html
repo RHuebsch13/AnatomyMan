@@ -51,9 +51,9 @@
     </section>
 
    <!--credit for html and css layout for star rating,  .--> 
-    <section class = "text-center" id="feedback">
+    <section class = "text-center">
         <p>Let us know how you liked the game!</p>
-        <form id="ratingForm">
+        <form id="ratingForm" onSubmit="sendFeedback(event)" name="feedback">
             <div>
               <span class="fa fa-star" onclick="rateStar(1)" ></span>
               <span class="fa fa-star" onclick="rateStar(2)"></span>

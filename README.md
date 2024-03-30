@@ -148,6 +148,9 @@ To clone this project from Github:
 
 [CodingNepal](https://www.codingnepalweb.com/)
 - Arrow function for displaying random word and hint 
+
+[Chaoo Charles](https://www.youtube.com/watch?v=bMq2riFCF90)
+- Email.js for feedback
 ## Content
 - definitions used for the hints
 [USQ-Pressbooks](https://usq.pressbooks.pub/anatomy/back-matter/glossary/)

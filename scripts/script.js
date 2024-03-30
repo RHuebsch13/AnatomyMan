@@ -250,6 +250,29 @@ function highlightStars(rating) {
         }
     }
 }
+
+// Initialize EmailJS
+emailjs.init('_ePANf65tKkhxY7nj');
+
+// Function to handle form submission
+function sendFeedback(event) {
+    event.preventDefault();
+    const feedbackForm = document.getElementById('ratingForm');
+    const feedbackData = {
+        message: feedbackForm.feedback.value,
+    };
+    
+    // Send feedback via EmailJS
+    emailjs.send('service_8x2fghb', 'template_fc38s9b', feedbackData)
+        .then(function(response) {
+            console.log('SUCCESS!', feedbackData);
+            alert('Feedback submitted successfully!');
+            feedbackForm.reset(); // Reset the form after successful submission
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('Failed to submit feedback. Please try again later.');
+        });
+}
  
 
     
