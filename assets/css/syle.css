@@ -109,7 +109,7 @@ body {
 
 #rules {
     max-width: 600px; 
-    max-height: auto;
+    height: auto;
     margin: 0 auto;
     background-color: #1645f5
 }
