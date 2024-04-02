@@ -91,6 +91,62 @@ line 231 media queries
 
 # 4. Testing
 ## Results
+### Manual Function  and Feature Testing
+#### selectRandomWord()
+
+Ensure a word and hint are displayed.
+
+Check if input fields for each letter of the word are generated.
+
+Verify that the hangman image is displayed.
+
+#### displayHangman(incorrectGuesses):
+
+Test with different values of incorrectGuesses (0 to 6).
+
+Confirm that the correct hangman image is displayed for each value.
+
+#### handleInput(event):
+
+Test with correct letter input.
+
+Check if the input is marked as correct.
+
+Confirm that disabled and move to the next input works.
+
+Verify if the new word is selected when all letters are correct.
+
+Test with incorrect letter input.
+
+Ensure that incorrect guesses are incremented.
+
+Confirm if the hangman image updates accordingly.
+Check if game-over message is displayed when max incorrect guesses are reached.
+Verify if incorrect letter alert is shown.
+Ensure the functionality of clearing input when an incorrect letter is entered.
+newRound():
+
+Test if the game-over message is hidden.
+Check if incorrect guesses are reset to 0.
+Verify if hangman display is reset.
+Confirm if input fields are enabled and cleared.
+rateStar(rating):
+
+Test with different ratings (0 to 5).
+Check if stars are highlighted according to the selected rating.
+Ensure the correct text is displayed in the feedback box.
+highlightStars(rating):
+
+Test with different ratings (0 to 5).
+Confirm if stars are highlighted up to the given rating and not beyond.
+sendFeedback(event):
+
+Test with a valid feedback message.
+Verify if feedback is submitted successfully.
+Confirm if the form is reset after successful submission.
+Test with an invalid feedback message (e.g., empty message).
+Ensure an appropriate error message is displayed.
+Confirm that the form remains unchanged.
 
 
 
@@ -142,14 +198,32 @@ To clone this project from Github:
 ## Code
 - Use of .match() in keyboard event listener [Developer Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
 
-- 
+- Use of querySelector() [W3schools](https://www.w3schools.com/jsref/met_document_queryselector.asp)
 
-[CodingNepal](https://www.codingnepalweb.com/)
-- Understanding JavaScript in games
+- Use of split() [W3schools](https://www.w3schools.com/jsref/jsref_split.asp)
 
+- Use of Arrow Functions: Code Institute, Using Arrow FUnctions.
 
-[Chaoo Charles](https://www.youtube.com/watch?v=bMq2riFCF90)
-- Email.js for feedback
+- Use of focus() [W3schools](https://www.w3schools.com/jsref/met_html_focus.asp)
+
+- Use of appendChild(), setAttribute and createElement: Code Institute, Adding and Removing Elements and Writing Complex HTML With JavaScript.
+
+- Use of taregt event property [W3schools](https://www.w3schools.com/jsref/event_target.asp)
+
+- Use of setTimeout() [W3schools](https://www.w3schools.com/jsref/met_win_settimeout.asp)
+
+- Use of every() [W3schools](https://www.w3schools.com/jsref/jsref_every.asp)
+
+- Use of data- attribute [W3schools](https://www.w3schools.com/tags/att_data-.asp)
+
+- JavaScript Comparison and Logical Operators [W3schools](https://www.w3schools.com/js/js_comparisons.asp)
+
+- Use of querySelector(), use of Array to hold words and hints, understanding game logic and layout, use of split() [CodingNepal](https://www.codingnepalweb.com/build-hangman-game-html-javascript/)
+
+- Email.js: Code Institute; Putting it all together.
+
+- Email.js for feedback [Chaoo Charles](https://www.youtube.com/watch?v=bMq2riFCF90)
+
 ## Content
 - definitions used for the hints
 [USQ-Pressbooks](https://usq.pressbooks.pub/anatomy/back-matter/glossary/)
@@ -158,3 +232,4 @@ To clone this project from Github:
 - [Colour Palette](https://www.color-hex.com/color-palette/109374)
 - [Favicon-generator](https://realfavicongenerator.net/)
 - [Favicon-image](https://png.pngtree.com/png-vector/20220217/ourmid/pngtree-flat-vector-of-black-hangmans-noose-for-suicide-or-lynching-vector-png-image_44501344.jpg)
+- [Hangman-images](https://www.youtube.com/watch?v=hSSdc8vKP1I) in the comment section.

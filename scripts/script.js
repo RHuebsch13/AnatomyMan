@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    // list of words to be used in the game
+    // list of words to be used in the game. Credit to CodingNepal for using an array to hold words and hints.
     let guessList = [
         {
             word: "lacteal",

@@ -22,7 +22,9 @@ body {
     background-color: #ff5f85;
 }
 
-/*----------------------------------------------------------------------------------index.html--------------*/
+/*----------------------------------------------------------------------------------index.html--------------
+credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and JavaScript"
+*/
 .inner-box {
     max-width: 850px; 
     background-color: #fff ;
@@ -137,7 +139,9 @@ button[type="submit"]:hover {
     color: #f0f14e;
 }
 
-/*----------------------------------------------------------------------------------pop-ups and buttons--------------*/
+/*------------------------------------------------------------------pop-ups and buttons--------------
+credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and JavaScript"
+*/
 .game-end{
     position: fixed;
     left: 0;
