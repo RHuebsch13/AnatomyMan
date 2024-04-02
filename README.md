@@ -8,7 +8,7 @@ Identified key user personas, ie. People who study anatomy, the body, and how it
 The goals of this project are to produce a fun, interactive game that gives users a different way to continue to learn. It also aims to help the user practice terminology and spelling of various terms used in the field of anatomy.
 
 ## User Goals
-The user will have easy access to the website features, including an informative instructions page and a interactive hangman game. To achieve responsive design; flexible layouts and a mobile first approach will be used to extended acessiblity to as many screens as possible.
+The user will have easy access to the website features, including an informative instructions page and a interactive hangman game. To further user interaction, there is a star rating feedback form that user may communicate with the developers. To achieve responsive design; flexible layouts and a mobile first approach will be used to extended acessiblity to as many screens as possible.
 
 
 ## User Stories
@@ -16,7 +16,7 @@ As a visiting user, I would like to access the instructions so that I know the g
 
 As a visiting user, I would like to keep track of my incorrect and correct answers.
 
-As a visiting user, I would like to have an increased challenge of beating a timer.
+As a visiting user, I would like to have send feedbak about my user experience.
 
 As a visiting user, I would like to have a clear understanding of which letters are correct/incorrect.
 
@@ -25,75 +25,69 @@ As a visiting user, I would like to have access to hints if I struggle to find t
 As a visiting user, I would like to know how many attempts I have left to guess the word.
 
 ## Design choices
-The design aims to be visually appealing, with an interface that is simple. The color scheme reflects a retro colours that are fun and bright, there aa slight colour alteration as the timer progresses, in order to add more interactivity. As well as colour changes when letters are correct. GoodUI was comsulted to help the project follow common and consistent UI/UX conventions.Only High-quality images are used to ensure a positive user experience.  All design choices are made to create an easy to use and easy to naviagte website. The webpage has a traditional 2 page layout with continuity in terms of navbar, footer and content layout. All of these elements remain in the same place on each page. This makes the site easy to learn, use and navigation for the user.
+The design aims to be visually appealing, with an interface that is simple. The color scheme reflects retro arcade colours that are fun and bright. Colour change is used to notify the user when letters are correct, these correct letters will also be disabled. GoodUI was comsulted to help the project follow common and consistent UI/UX conventions. Only High-quality images are used to ensure a positive user experience.  All design choices are made to create an easy to use and easy to naviagte website. The webpage has a traditional 2 page layout with continuity in terms of navbar and content layout. All of these elements remain in the same place on each page. This makes the site easy to learn, use and navigation for the user.
 
 
 ### Fonts
-
-
-### Icons
-
+Raleway is used throughout the webpage. It is a sans-serif font with thin, font-weight lines and large letter spacing. It creates a comfortable reading experience that matches the overall feel of the page, without compromising page space.
 
 ### Colours
+This colour scheme draws on the iconic era of arcade games and employs the retro colours to engage the user. They are bright and happy colours and brings a theme of fun to the page.
 ![colour scheme](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/colors.png?raw=true)
 
 ### Styling
-
+The nav bar is clear and easy to see, the logo "anatomyman" fits in the navbar. The focal point of the page is the interactive game space. This space is made up of two divs that contribute to the user experience of the game. The classic empty handman noose, letter input squares and the hint box share the space. The instruction page is simply laid out to allow for quick and easy reading to help the user learn how to play. A feedback form is under the instructions and uses a star rating which can be sent to a developer email. This is using EmailJS. The feedback form can be edited so that the user can insert comments with or instead of the star rating.
 
 ### Backgrounds
-The design choice of one solid background colour was made to maintain accessibility for the user.
+The design choice of one solid background colour was made to maintain accessibility for the user. Solid colours were used to make the content stand out.
  
 ### Content
-Instructions that guide the user to play the game so the rules are understood and there is no confusion. There is are letter input spaces that will work with the users' keyboard. There is a progressive hangman image that updates as the user gets answers wrong, to eventually reach the well-known fully drawn hanged man. 
+Instructions that guide the user to play the game so the rules are understood and there is no confusion. There are letter input spaces that will work with the users' keyboard. There is a progressive hangman image that updates as the user gets answers wrong, to eventually reach the well-known fully drawn hanged man. There is a star rating feedback. 
 
 ## Wireframes
-Designed in balsamiq, there are 2 wireframes for each pages. Providing planned layout and views on large screens, medium screens and small screens.
+Designed in balsamiq, there are 3 wireframes for each page. Providing planned layout and views on large screens, medium screens and small screens.
 
-### index.html
-![wireframe big screens](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/large.index.png?raw=true)
-![wireframe medium screens](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/medium.index.png?raw=true)
+![wireframe big screen](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/large.index.png?raw=true)
+![wireframe big screen](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/large.instruct.png?raw=true)
+![wireframe medium screen](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/medium.index.png?raw=true)
+![wireframe medium screen](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/medium.instruct.png?raw=true)
 ![wireframe small screens](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/small.png?raw=true)
-
-### instructions.html
-![wireframe big screens](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/medium.index.png?raw=true)
-![wireframe medium screens](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/medium.instruct.png?raw=true)
-
-
 
 
 # 2. Features
 
 ## Existing Features
+ * Navbar dropdown: this only becomes visible when the screen real-estate is less than 768px, making the navbar easily accessible even on a smaller screen. Showing the ability to prioritizing content and features for smaller screens while maintaining a seamless user experience. The purpose of this is to ensure that the website will work for as many people as possible across as many different devices as possible.
+
 * Instructions on how the game works.
 
-*Progressive hangman image that updates as the user gets answers wrong, to eventually reach the well-known fully drawn hanged man.
+* Progressive hangman image that updates as the user gets answers wrong, to eventually reach the well-known fully drawn hanged man.
 
-* Interactive input letters the user will interact with to find the word. Letters put in the input boxes that are correct will be disbaled and change in colour
+* Interactive input letters the user will interact with to find the word. Letters put in the input boxes that are correct will be disbaled and change in colour.
 
-* A timer that limits the user's chance to find the word, adding an aspect of increased difficulty.
+* Interactive star rating that can be sent to the developer by emailJS.
 
 
 ## Left to Implement
- * Colour changes to the interface activate as the timer runs down.
+* Timer to increase challenge aspect.
+
+* Colour changes to the interface activate as the timer runs down.
 
 # 3. Technology Used
 
-HTML, CSS, JavaScript, Bootstrap, jQuery JavaScript library.
+HTML, CSS, JavaScript, Bootstrap, jQuery JavaScript library, EmailJS.
 
 CSS styling is applied as:
 
-line  navbar
+line 1 - 17 navbar
 
-line index.html
+line 26 - 90 index.html
 
-- line
-- line
+line 92 - 138 instructions.html
 
-line 219 instructions.html
-- line 
-- line
+line 142 - 229 pop-ups
 
-line  footer
+line 231 media queries
 
 # 4. Testing
 ## Results
@@ -113,13 +107,15 @@ line  footer
 
 ## Validation Tests
 - Code passed all validation tests on w3c validator and w3c CSS validator.
-  - [CSS Validation]()
-  - [Index.html]()
-  - [Instructions.html]()
+  - [CSS Validation](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/CSSval.png?raw=true)
+  - [Index.html](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/HTMLvalHome.png?raw=true)
+  - [Instructions.html](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/HTMLvalInstruct.png?raw=true)
 
 ## Lighthouse Testing
-- [Index.html]()
-- [Instructions.html]()
+- [Index.html-Desktop](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseDesktopHome.pdf)
+- [Index.html-Mobile](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseMobileHome.pdf)
+- [Instructions.html-Desktop](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseDeskopInstruct.pdf)
+- [Instructions.html-Mobile](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseMobileInstruct.pdf)
 
 # 5. Deployment
 This project was developed using codeanywhere and VS code IDE, commited to Git and pushed to GitHub.
@@ -146,8 +142,11 @@ To clone this project from Github:
 ## Code
 - Use of .match() in keyboard event listener [Developer Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
 
+- 
+
 [CodingNepal](https://www.codingnepalweb.com/)
-- Arrow function for displaying random word and hint 
+- Understanding JavaScript in games
+
 
 [Chaoo Charles](https://www.youtube.com/watch?v=bMq2riFCF90)
 - Email.js for feedback

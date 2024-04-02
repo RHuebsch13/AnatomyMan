@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //instructions page, interactive star rating
     let currentRating = 0;
     
-    function rateStar(rating) {
+    const rateStar = (rating) => {
         currentRating = rating;
         highlightStars(rating);
         let ratingText = rating + " star"; 
@@ -238,9 +238,9 @@ document.addEventListener("DOMContentLoaded", function() {
             ratingText += "s"; // For plural if rating is not 1
         }
         document.getElementById("ratingInput").value = ratingText; // Update the feedback box
-    }
+    };
     
-    function highlightStars(rating) {
+    const highlightStars = (rating) => {
         let stars = document.getElementsByClassName("fa-star");
         for (let i = 0; i < stars.length; i++) {
             if (i < rating) {
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 stars[i].classList.remove("checked");
             }
         }
-    }
+    };
     
     // Initialize EmailJS
     emailjs.init("_ePANf65tKkhxY7nj");
