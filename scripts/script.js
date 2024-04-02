@@ -91,9 +91,17 @@ document.addEventListener("DOMContentLoaded", function() {
     // randomly selects a word and hint from guessList
     function selectRandomWord() {
         incorrectGuesses = 0; // clears incorrect guesses for a new word selection.
+
+     // Check if there are words left to guess
+      if (guessList.length === 0) {
+        alert("All words have been guessed! Start a new game.");
+        return;
+      }
     
         const randomIndex = Math.floor(Math.random() * guessList.length);
         const selectedWord = guessList[randomIndex];
+
+        guessList.splice(randomIndex, 1);
     
         // shows the hint for the selected word.
         const hintElement = document.querySelector(".clue");

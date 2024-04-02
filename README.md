@@ -1,3 +1,4 @@
+![](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/logo.png?raw=true)
 # AnatomyMan
 
 # 1. UX
@@ -33,6 +34,7 @@ Raleway is used throughout the webpage. It is a sans-serif font with thin, font-
 
 ### Colours
 This colour scheme draws on the iconic era of arcade games and employs the retro colours to engage the user. They are bright and happy colours and brings a theme of fun to the page.
+
 ![colour scheme](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/colors.png?raw=true)
 
 ### Styling
@@ -93,63 +95,54 @@ line 231 media queries
 ## Results
 ### Manual Function  and Feature Testing
 #### selectRandomWord()
-
-Ensure a word and hint are displayed.
-
-Check if input fields for each letter of the word are generated.
-
-Verify that the hangman image is displayed.
+* Ensure a word and hint are displayed.
+* Check if input fields for each letter of the word are generated.
+* Verify that the hangman image is displayed.
 
 #### displayHangman(incorrectGuesses):
 
-Test with different values of incorrectGuesses (0 to 6).
-
-Confirm that the correct hangman image is displayed for each value.
+* Test with different values of incorrectGuesses (0 to 6).
+* Confirm that the correct hangman image is displayed for each value.
 
 #### handleInput(event):
 
-Test with correct letter input.
+* Test with correct letter input.
+* Check if the input is marked as correct.
+* Confirm that disabled and move to the next input works.
+* Verify if the new word is selected when all letters are correct.
+* Test with incorrect letter input.
+* Ensure that incorrect guesses are incremented.
+* Confirm if the hangman image updates accordingly.
+* Check if game-over message is displayed when max incorrect guesses are reached.
+* Verify if incorrect letter alert is shown.
+* Ensure the functionality of clearing input when an incorrect letter is entered.
 
-Check if the input is marked as correct.
+#### newRound():
 
-Confirm that disabled and move to the next input works.
+* Test if the game-over message is hidden.
+* Check if incorrect guesses are reset to 0.
+* Verify if hangman display is reset.
+* Confirm if input fields are enabled and cleared.
 
-Verify if the new word is selected when all letters are correct.
+#### rateStar(rating):
 
-Test with incorrect letter input.
+* Test with different ratings (0 to 5).
+* Check if stars are highlighted according to the selected rating.
+* Ensure the correct text is displayed in the feedback box.
 
-Ensure that incorrect guesses are incremented.
+#### highlightStars(rating):
 
-Confirm if the hangman image updates accordingly.
-Check if game-over message is displayed when max incorrect guesses are reached.
-Verify if incorrect letter alert is shown.
-Ensure the functionality of clearing input when an incorrect letter is entered.
-newRound():
+* Test with different ratings (0 to 5).
+* Confirm if stars are highlighted up to the given rating and not beyond.
 
-Test if the game-over message is hidden.
-Check if incorrect guesses are reset to 0.
-Verify if hangman display is reset.
-Confirm if input fields are enabled and cleared.
-rateStar(rating):
+#### sendFeedback(event):
 
-Test with different ratings (0 to 5).
-Check if stars are highlighted according to the selected rating.
-Ensure the correct text is displayed in the feedback box.
-highlightStars(rating):
-
-Test with different ratings (0 to 5).
-Confirm if stars are highlighted up to the given rating and not beyond.
-sendFeedback(event):
-
-Test with a valid feedback message.
-Verify if feedback is submitted successfully.
-Confirm if the form is reset after successful submission.
-Test with an invalid feedback message (e.g., empty message).
-Ensure an appropriate error message is displayed.
-Confirm that the form remains unchanged.
-
-
-
+* Test with a valid feedback message.
+* Verify if feedback is submitted successfully.
+* Confirm if the form is reset after successful submission.
+* Test with an invalid feedback message (e.g., empty message).
+* Ensure an appropriate error message is displayed.
+* Confirm that the form remains unchanged.
 
 ## Bug Problems
 
