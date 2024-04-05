@@ -103,10 +103,16 @@ credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and 
 }
 
 #objectives {
-    max-width: 600px; 
-    max-height: 200px;
+    max-width: 600px;
+    height: auto;
     margin: 0 auto;
-    background-color: #ed3833 
+    background-color: #ed3833;
+    padding: 20px; /* Add padding to provide space inside the div */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#objectives p {
+    margin: 0; /* Remove default margins to prevent unexpected spacing */
 }
 
 #rules {
@@ -232,15 +238,13 @@ credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and 
     background-color: #ed3833;
 }
 
-@media only screen and (min-width: 577px) and (max-width: 768px) {
-    .game-word .letter {
-        width: 30px;
-        height: 30px;
-        font-size: 2rem;  
+@media only screen and (min-width: 426px) {
+    #rules {
+        margin-top: 20px; /* Add margin to create space between #objectives and #rules on screens larger than 425px */
     }
-    
-  }
-  @media screen and (max-width: 576px) {
+}
+
+@media screen and (max-width: 576px) {
     .inner-box {
         display: flex;
         flex-direction: column;
@@ -278,8 +282,17 @@ credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and 
 
     #objectives,
     #rules {
-        max-width: 90%; 
         padding: 10px; 
         margin: 10px; 
     }
 }
+
+@media only screen and (max-width: 320px) {
+    #objectives {
+        height: auto;
+    }
+    .navbar {
+        margin-bottom: 10px; 
+    }
+}
+

@@ -217,8 +217,9 @@
         const hangmanImg = document.querySelector(".hangman-box img");
         hangmanImg.setAttribute("src", `assets/images/hangman-${incorrectGuesses}.svg`);
     }
-    
+    document.addEventListener("DOMContentLoaded", function() {
     selectRandomWord();
+    });
     
     document.querySelectorAll(".new-round").forEach(function(button) {
         button.addEventListener("click", function() {
@@ -307,4 +308,4 @@
     function handleFeedbackFailure() {
         alert("Failed to submit feedback. Please try again later.");
     }
-    document.getElementById("ratingForm").addEventListener("submit", sendFeedback);
+   
