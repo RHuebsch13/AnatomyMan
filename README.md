@@ -144,15 +144,6 @@ line 231 media queries
 * Ensure an appropriate error message is displayed.
 * Confirm that the form remains unchanged.
 
-## Bug Problems
-
-
-
-
-
-## After Deployment
-
-
 
 ## Validation Tests
 - Code passed all validation tests on w3c validator and w3c CSS validator.
@@ -165,6 +156,8 @@ line 231 media queries
 - [Index.html-Mobile](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseMobileHome.pdf)
 - [Instructions.html-Desktop](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseDeskopInstruct.pdf)
 - [Instructions.html-Mobile](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseMobileInstruct.pdf)
+
+## Bug Problems
 
 # 5. Deployment
 This project was developed using codeanywhere and VS code IDE, commited to Git and pushed to GitHub.

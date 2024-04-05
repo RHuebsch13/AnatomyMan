@@ -1,6 +1,4 @@
-
-document.addEventListener("DOMContentLoaded", function() {
-    // list of words to be used in the game. Credit to CodingNepal for using an array to hold words and hints.
+// list of words to be used in the game. Credit to CodingNepal for using an array to hold words and hints.
     let guessList = [
         {
             word: "lacteal",
@@ -84,30 +82,28 @@ document.addEventListener("DOMContentLoaded", function() {
         },
     ];
     
-    let incorrectGuesses = 0; // stores incorrect guesses made by the player.
-    let totalCorrectGuesses = 0; // adds the total correct guesses per game.
-    let totalIncorrectGuesses = 0; // adds the total incorrect guesses per game.
+    let incorrectGuesses = 0;
+    let totalCorrectGuesses = 0;
+    let totalIncorrectGuesses = 0;
     
-    // randomly selects a word and hint from guessList
+    const guessedLetters = {};
+    
     function selectRandomWord() {
-        incorrectGuesses = 0; // clears incorrect guesses for a new word selection.
-
-     // Check if there are words left to guess
-      if (guessList.length === 0) {
-        alert("All words have been guessed! Start a new game.");
-        return;
-      }
+        incorrectGuesses = 0;
+    
+        if (guessList.length === 0) {
+            alert("All words have been guessed! Start a new game.");
+            return;
+        }
     
         const randomIndex = Math.floor(Math.random() * guessList.length);
         const selectedWord = guessList[randomIndex];
-
+    
         guessList.splice(randomIndex, 1);
     
-        // shows the hint for the selected word.
         const hintElement = document.querySelector(".clue");
         hintElement.textContent = selectedWord.hint;
     
-        // shows input elements for each letter of the selected word.
         const gameWordElement = document.querySelector(".game-word");
         gameWordElement.innerHTML = "";
     
@@ -121,146 +117,154 @@ document.addEventListener("DOMContentLoaded", function() {
             gameWordElement.appendChild(inputElement);
         });
     
-        // shows hangman image according to incorrect guesses.
         displayHangman(incorrectGuesses);
     
-        // shows the selected word, if user runs out of guesses.
         const wordParagraph = document.querySelector(".game-end p b");
         wordParagraph.textContent = selectedWord.word;
     }
     
-    // handles player's input for guessing letters.
     function handleInput(event) {
-        const enteredLetter = event.target.value.toLowerCase(); // letter entered by the player.
-        const correctLetter = event.target.dataset.letter.toLowerCase(); // correct letter to compare.
+        const enteredLetter = event.target.value.toLowerCase();
+        const correctLetter = event.target.dataset.letter.toLowerCase();
+        const incorrectLetter = event.target.value;
     
-        const incorrectLetter = event.target.value; // incorrect letter entered by the player.
+        const inputElement = event.target;
+        
+        if (!inputElement.dataset.guessedLetters) {
+            inputElement.dataset.guessedLetters = "";
+        }
+        
+        if (inputElement.dataset.guessedLetters.includes(enteredLetter)) {
+            alert("You have already tried that letter.");
+            event.target.value = ""; // Clear the input field
+            return;
+        }
     
-        // if the entered letter is correct.
+        inputElement.dataset.guessedLetters += enteredLetter;
+    
         if (enteredLetter === correctLetter) {
-            // shows the input as correct, disabling it, and move to the next input.
-            event.target.setAttribute("id", "correct");
-            event.target.disabled = true;
-            const nextInput = event.target.nextElementSibling;
-            if (nextInput) {
-                nextInput.focus();
-            }
-    
-            // checks if all letters are correct, then selects a new word.
-            const allCorrect = Array.from(document.querySelectorAll(".game-word .letter")).every(function(letterInput) {
-                return letterInput.disabled;
-            });
-            if (allCorrect) {
-                selectRandomWord(); // new word.
-                document.querySelector(".game-yay").style.display = "flex"; // shows you-win message.
-                document.querySelector(".game-yay").style.justifyContent = "center";
-                document.querySelector(".game-yay").style.alignItems = "center";
-                totalCorrectGuesses++; // increments total correct guesses.
-                document.querySelector(".right-answers b").textContent = totalCorrectGuesses; // Updates score.
-            }
-        } else { // if the entered letter is incorrect.
-            incorrectGuesses++; // incrementing incorrect guesses.
-            displayHangman(incorrectGuesses); // updating hangman image.
-    
-            // if the max incorrect guesses reached.
-            if (incorrectGuesses >= 6) {
-                setTimeout(function() {
-                    document.querySelector(".game-end").style.display = "flex"; // shows game-over message.
-                    document.querySelector(".game-end").style.justifyContent = "center";
-                    document.querySelector(".game-end").style.alignItems = "center";
-                    totalIncorrectGuesses++; // incrementing total incorrect guesses.
-                    document.querySelector(".wrong-answers b").textContent = totalIncorrectGuesses; // updates score.
-                }, 500);
-            } else { // haven't reached max incorrect guesses.
-                event.target.value = incorrectLetter; // shows incorrect letter.
-                setTimeout(function() {
-                    alert("Incorrect letter. Please try again."); // pop up alert.
-                    setTimeout(function() {
-                        event.target.value = ""; // Clear input.
-                    }, 100);
-                }, 0);
-            }
+            handleCorrectInput(inputElement);
+        } else {
+            handleIncorrectInput(inputElement, incorrectLetter);
         }
     }
     
-    // replace hangman image for incorrect guesses.
+    
+    function handleCorrectInput(target) {
+        target.setAttribute("id", "correct");
+        target.disabled = true;
+        const nextInput = target.nextElementSibling;
+        if (nextInput) {
+            nextInput.focus();
+        }
+    
+        const allCorrect = Array.from(document.querySelectorAll(".game-word .letter")).every(function(letterInput) {
+            return letterInput.disabled;
+        });
+        if (allCorrect) {
+            handleCorrectGuess();
+        }
+    }
+    
+    function handleIncorrectInput(target, incorrectLetter) {
+        incorrectGuesses++;
+        displayHangman(incorrectGuesses);
+    
+        if (incorrectGuesses >= 6) {
+            handleGameOver();
+        } else {
+            target.value = incorrectLetter;
+            setTimeout(function() {
+                alert("Incorrect letter. Please try again.");
+                setTimeout(function() {
+                    target.value = "";
+                }, 100);
+            }, 0);
+        }
+    }
+    
+    function handleCorrectGuess() {
+        selectRandomWord();
+        document.querySelector(".game-yay").style.display = "flex";
+        document.querySelector(".game-yay").style.justifyContent = "center";
+        document.querySelector(".game-yay").style.alignItems = "center";
+        totalCorrectGuesses++;
+        document.querySelector(".right-answers b").textContent = totalCorrectGuesses;
+    }
+    
+    function handleGameOver() {
+        setTimeout(function() {
+            document.querySelector(".game-end").style.display = "flex";
+            document.querySelector(".game-end").style.justifyContent = "center";
+            document.querySelector(".game-end").style.alignItems = "center";
+            totalIncorrectGuesses++;
+            document.querySelector(".wrong-answers b").textContent = totalIncorrectGuesses;
+        }, 500);
+    }
+    
     function displayHangman(incorrectGuesses) {
         const hangmanImg = document.querySelector(".hangman-box img");
         hangmanImg.setAttribute("src", `assets/images/hangman-${incorrectGuesses}.svg`);
     }
     
-    selectRandomWord(); // start the game with a randomly selected word.
+    selectRandomWord();
     
-    // event listeners for new game buttons to reset the game.
     document.querySelectorAll(".new-round").forEach(function(button) {
         button.addEventListener("click", function() {
-            document.querySelector(".game-end").style.display = "none"; // hide game-over message.
-            selectRandomWord(); // new word
-            newRound(); 
+            document.querySelector(".game-end").style.display = "none";
+            selectRandomWord();
+            newRound();
         });
     });
     
-    // resets game for next word.
     function newRound() {
-        document.querySelector(".game-yay").style.display = "none"; // hide you-win message.
-        incorrectGuesses = 0; // reset incorrect guesses.
-        displayHangman(incorrectGuesses); // reset hangman display.
+        document.querySelector(".game-yay").style.display = "none";
+        incorrectGuesses = 0;
+        displayHangman(incorrectGuesses);
         const letterInputs = document.querySelectorAll(".game-word .letter");
         letterInputs.forEach(function(input) {
-            input.removeAttribute("id"); // remove styling for correct guesses.
-            input.disabled = false; // enable input fields.
-            input.value = ""; // clear input fields.
+            input.removeAttribute("id");
+            input.disabled = false;
+            input.value = "";
         });
     }
     
     document.querySelector(".reset").addEventListener("click", function() {
-        // confirmation pop-up
         const confirmed = window.confirm("Are you sure you want to start a new game?");
         if (confirmed) {
-            // hide game-over and you-win messages.
             document.querySelector(".game-end").style.display = "none";
             document.querySelector(".game-yay").style.display = "none";
-    
-            // reset scores to zero.
             totalCorrectGuesses = 0;
             totalIncorrectGuesses = 0;
             document.querySelector(".right-answers b").textContent = totalCorrectGuesses;
             document.querySelector(".wrong-answers b").textContent = totalIncorrectGuesses;
-    
-            // new round with a randomly selected word.
             newRound();
-        } else {
-            // will do nothing.
         }
     });
-    });
     
-    //instructions page, interactive star rating
-    let currentRating = 0;
-    
-    const rateStar = (rating) => {
+    // Function to update the rating display
+    function rateStar(rating) {
         currentRating = rating;
         highlightStars(rating);
+        updateFeedbackBox(rating);
+    }
+    
+    // Function to highlight the star ratings based on user selection
+    function highlightStars(rating) {
+        const stars = document.getElementsByClassName("fa-star");
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].classList.toggle("checked", i < rating);
+        }
+    }
+    
+    // Function to update the feedback box with the selected rating
+    function updateFeedbackBox(rating) {
         let ratingText = rating + " star"; 
         if (rating !== 1) {
             ratingText += "s"; // For plural if rating is not 1
         }
-        document.getElementById("ratingInput").value = ratingText; // Update the feedback box
-    };
-    
-    const highlightStars = (rating) => {
-        let stars = document.getElementsByClassName("fa-star");
-        for (let i = 0; i < stars.length; i++) {
-            if (i < rating) {
-                stars[i].classList.add("checked");
-            } else {
-                stars[i].classList.remove("checked");
-            }
-        }
-    };
-    
-    // Initialize EmailJS
-    emailjs.init("_ePANf65tKkhxY7nj");
+        document.getElementById("ratingInput").value = ratingText;
+    }
     
     // Function to handle form submission
     function sendFeedback(event) {
@@ -269,17 +273,22 @@ document.addEventListener("DOMContentLoaded", function() {
         const feedbackData = {
             message: feedbackForm.feedback.value,
         };
-        
-    // Send feedback via EmailJS
-   emailjs.send("service_8x2fghb", "template_fc38s9b", feedbackData)
-     .then(function() {
-     console.log("SUCCESS!", feedbackData);
-     alert("Feedback submitted successfully!");
-     feedbackForm.reset(); // Reset the form after successful submission
-    }, function(error) {
-      console.log("FAILED...", error);
-      alert("Failed to submit feedback. Please try again later.");
-    });
-    }
-
     
+        // Send feedback via EmailJS
+        emailjs.send("service_8x2fghb", "template_fc38s9b", feedbackData)
+             .then(handleFeedbackSuccess)
+             .catch(handleFeedbackFailure);
+    }
+    
+    // Function to handle successful feedback submission
+    function handleFeedbackSuccess() {
+        console.log("Feedback submitted successfully!");
+        alert("Feedback submitted successfully!");
+        document.getElementById("ratingForm").reset(); // Reset the form after successful submission
+    }
+    
+    // Function to handle failed feedback submission
+    function handleFeedbackFailure(error) {
+        console.error("Failed to submit feedback.", error);
+        alert("Failed to submit feedback. Please try again later.");
+    }
