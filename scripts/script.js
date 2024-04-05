@@ -82,24 +82,27 @@
         },
     ];
     
+    let guessedCorrectWords = [];
+    let guessedIncorrectWords = [];
     let incorrectGuesses = 0;
     let totalCorrectGuesses = 0;
     let totalIncorrectGuesses = 0;
     
-    const guessedLetters = {};
-    
     function selectRandomWord() {
-        incorrectGuesses = 0;
-    
-        if (guessList.length === 0) {
-            alert("All words have been guessed! Start a new game.");
+        if (guessedCorrectWords.length === guessList.length) {
+            alert("Congratulations! You've guessed all words correctly. Start a new game.");
             return;
         }
     
-        const randomIndex = Math.floor(Math.random() * guessList.length);
-        const selectedWord = guessList[randomIndex];
+        let availableWords = guessList.filter(wordObj => !guessedCorrectWords.includes(wordObj.word) && !guessedIncorrectWords.includes(wordObj.word));
     
-        guessList.splice(randomIndex, 1);
+        if (availableWords.length === 0) {
+            alert("All words have been guessed. Some were incorrect. Start a new game.");
+            return;
+        }
+    
+        const randomIndex = Math.floor(Math.random() * availableWords.length);
+        const selectedWord = availableWords[randomIndex];
     
         const hintElement = document.querySelector(".clue");
         hintElement.textContent = selectedWord.hint;
@@ -118,22 +121,24 @@
         });
     
         displayHangman(incorrectGuesses);
-    
-        const wordParagraph = document.querySelector(".game-end p b");
-        wordParagraph.textContent = selectedWord.word;
     }
     
     function handleInput(event) {
-        const enteredLetter = event.target.value.toLowerCase();
-        const correctLetter = event.target.dataset.letter.toLowerCase();
-        const incorrectLetter = event.target.value;
-    
+        const enteredKey = event.data;
         const inputElement = event.target;
-        
+    
+        if (!/^[a-zA-Z]$/.test(enteredKey)) {
+            event.target.value = ""; // Clear the input field
+            return;
+        }
+    
+        const enteredLetter = enteredKey.toLowerCase();
+        const correctLetter = inputElement.dataset.letter.toLowerCase();
+    
         if (!inputElement.dataset.guessedLetters) {
             inputElement.dataset.guessedLetters = "";
         }
-        
+    
         if (inputElement.dataset.guessedLetters.includes(enteredLetter)) {
             alert("You have already tried that letter.");
             event.target.value = ""; // Clear the input field
@@ -145,10 +150,9 @@
         if (enteredLetter === correctLetter) {
             handleCorrectInput(inputElement);
         } else {
-            handleIncorrectInput(inputElement, incorrectLetter);
+            handleIncorrectInput(inputElement, enteredKey);
         }
     }
-    
     
     function handleCorrectInput(target) {
         target.setAttribute("id", "correct");
@@ -172,6 +176,7 @@
     
         if (incorrectGuesses >= 6) {
             handleGameOver();
+            guessedIncorrectWords.push(target.dataset.letter);
         } else {
             target.value = incorrectLetter;
             setTimeout(function() {
@@ -184,12 +189,18 @@
     }
     
     function handleCorrectGuess() {
-        selectRandomWord();
-        document.querySelector(".game-yay").style.display = "flex";
-        document.querySelector(".game-yay").style.justifyContent = "center";
-        document.querySelector(".game-yay").style.alignItems = "center";
+        const selectedWord = Array.from(document.querySelectorAll(".game-word .letter")).map(input => input.dataset.letter).join('');
+        guessedCorrectWords.push(selectedWord);
         totalCorrectGuesses++;
         document.querySelector(".right-answers b").textContent = totalCorrectGuesses;
+        selectRandomWord();
+        if (guessedCorrectWords.length === guessList.length) {
+            alert("Congratulations! You've guessed all words correctly. Start a new game.");
+        } else {
+            document.querySelector(".game-yay").style.display = "flex";
+            document.querySelector(".game-yay").style.justifyContent = "center";
+            document.querySelector(".game-yay").style.alignItems = "center";
+        }
     }
     
     function handleGameOver() {
@@ -226,6 +237,7 @@
             input.removeAttribute("id");
             input.disabled = false;
             input.value = "";
+            input.dataset.guessedLetters = "";
         });
     }
     
@@ -236,6 +248,8 @@
             document.querySelector(".game-yay").style.display = "none";
             totalCorrectGuesses = 0;
             totalIncorrectGuesses = 0;
+            guessedCorrectWords = [];
+            guessedIncorrectWords = [];
             document.querySelector(".right-answers b").textContent = totalCorrectGuesses;
             document.querySelector(".wrong-answers b").textContent = totalIncorrectGuesses;
             newRound();
@@ -274,21 +288,23 @@
             message: feedbackForm.feedback.value,
         };
     
-        // Send feedback via EmailJS
-        emailjs.send("service_8x2fghb", "template_fc38s9b", feedbackData)
-             .then(handleFeedbackSuccess)
-             .catch(handleFeedbackFailure);
+    // Initialize EmailJS
+    emailjs.init("_ePANf65tKkhxY7nj");
+
+    // Send feedback via EmailJS
+    emailjs.send("service_8x2fghb", "template_fc38s9b", feedbackData)
+        .then(handleFeedbackSuccess)
+        .catch(handleFeedbackFailure);
     }
     
     // Function to handle successful feedback submission
     function handleFeedbackSuccess() {
-        console.log("Feedback submitted successfully!");
         alert("Feedback submitted successfully!");
         document.getElementById("ratingForm").reset(); // Reset the form after successful submission
     }
     
     // Function to handle failed feedback submission
-    function handleFeedbackFailure(error) {
-        console.error("Failed to submit feedback.", error);
+    function handleFeedbackFailure() {
         alert("Failed to submit feedback. Please try again later.");
     }
+    document.getElementById("ratingForm").addEventListener("submit", sendFeedback);

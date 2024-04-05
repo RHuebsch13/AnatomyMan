@@ -240,37 +240,46 @@ credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and 
     }
     
   }
-@media screen and (max-width: 576px) {
+  @media screen and (max-width: 576px) {
     .inner-box {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
+    .game-word {
+        margin-left: 0;
+        gap: 5px; 
+        margin-bottom: 10px; 
+    }
+
     .game-word .letter {
-        width: 25px;
-        height: 25px;
-        font-size: 1rem;  
-    }
-    .hint {
-        margin-top: 20px; 
-        text-align: center;
+        width: 30px; 
+        height: 30px; 
+        font-size: 1rem; 
     }
 
-.game-box {
-    margin-right: 35px;
-    
-}
+    .wrong-answers,
+    .right-answers {
+        text-align: center; 
+        margin: 5px 0; 
+    }
 
-#objectives{
-    max-height: none;
-    font-size: 14px;
-    margin: 10px;
-    padding: 5px;
-}
+    .reset {
+        margin-top: 10px; 
+    }
 
-#rules {
-    margin-top: 50px;
-    margin: 10px;
-    padding: 10px;
-}
+    .game-box {
+        margin-right: 0; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #objectives,
+    #rules {
+        max-width: 90%; 
+        padding: 10px; 
+        margin: 10px; 
+    }
 }
