@@ -114,7 +114,11 @@ Testing is done to verify that the software behaves as expected and meets the sp
 ![guess3](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess3.png?raw=true)
 ![guess4](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess4.png?raw=true)
 ![guess5](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess5.png?raw=true)
-![guess6]()
+![guess6](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess6.png?raw=true)
+![gameOver](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/gameOver.png?raw=true)
+
+* The above shots shows that the hangman image updates and displays with the amount of incorrect guesses.
+
 
 #### handleInput(event):
 
@@ -128,6 +132,16 @@ Testing is done to verify that the software behaves as expected and meets the sp
 * Check if game-over message is displayed when max incorrect guesses are reached.
 * Verify if incorrect letter alert is shown.
 * Ensure the functionality of clearing input when an incorrect letter is entered.
+![correctInput](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/inputCorrect.png?raw=true)
+![IncorrectInput](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/inputNot.png?raw=true)
+![SameLetter](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/sameLetter.png?raw=true)
+![scoreIncrese](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/newGame1.png?raw=true)
+![]()
+![]()
+![]()
+![]()
+![]()
+![]()
 
 #### newRound():
 
