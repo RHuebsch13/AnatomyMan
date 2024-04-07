@@ -133,33 +133,44 @@ Testing is done to verify that the software behaves as expected and meets the sp
 * Verify if incorrect letter alert is shown.
 * Ensure the functionality of clearing input when an incorrect letter is entered.
 ![correctInput](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/inputCorrect.png?raw=true)
-![IncorrectInput](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/inputNot.png?raw=true)
-![SameLetter](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/sameLetter.png?raw=true)
-![scoreIncrese](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/newGame1.png?raw=true)
-![]()
-![]()
-![]()
-![]()
-![]()
-![]()
+![incorrectInput](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/inputNot.png?raw=true)
+![sameLetter](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/sameLetter.png?raw=true)
+![scoreUpdate](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/newGame1.png?raw=true)
+![scoreUpdate](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/scoreUpdate.png?raw=true)
+![guess1](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess1.png?raw=true)
+![gameOver](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/gameOver.png?raw=true)
+
+* As shown above; if the letter is correct, the letter will go green and can not be removed as the letter has been successfully disabled. If the letter is incorrect, a pop-up will appear to inform the user of this and the hangman image updates accordingly. If the user enters the same letter more than once in the same input field, a pop-up informin the user of this will be displayed. The input is cleared after the user closes the pop-up. A new word is selected if the word is guessed correctly. The score updates as expected. The game over message will show if the user makes 6 incorrect guesses.
 
 #### newRound():
 
-* Test if the game-over message is hidden.
 * Check if incorrect guesses are reset to 0.
 * Verify if hangman display is reset.
 * Confirm if input fields are enabled and cleared.
+![imageResets](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/newGameHangman.png?raw=true)
+![scoreResets](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/newGame3.png?raw=true)
+![clearedReset](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/newGameHangmanreset.png?raw=true)
 
-#### rateStar(rating):
+* The New Game button resets the game as expected.
+
+#### rateStar():
 
 * Test with different ratings (0 to 5).
 * Check if stars are highlighted according to the selected rating.
 * Ensure the correct text is displayed in the feedback box.
 
-#### highlightStars(rating):
+#### highlightStars():
 
 * Test with different ratings (0 to 5).
 * Confirm if stars are highlighted up to the given rating and not beyond.
+![1star](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star1.png?raw=true)
+![2stars](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star2.png?raw=true)
+![3stars](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star3.png?raw=true)
+![4stars](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star4.png?raw=true)
+![5stars](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star5.png?raw=true)
+![ownFeedback](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star5Own.png?raw=true)
+
+* The above shots validate both the rateStar function and the highlightstar function. Stars highlight as expected and the feedback box updates as expected. The user is able to delete the populated text and add their own comments. These feedback responses are sucessfully sent to a gmail account the developer can access. This is done with Email.JS. 
 
 #### sendFeedback(event):
 
@@ -169,6 +180,8 @@ Testing is done to verify that the software behaves as expected and meets the sp
 * Test with an invalid feedback message (e.g., empty message).
 * Ensure an appropriate error message is displayed.
 * Confirm that the form remains unchanged.
+![successful]()
+![failed]()
 
 
 ## Validation Tests
