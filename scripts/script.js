@@ -336,13 +336,20 @@ function handleGameOver() {
  * Sends feedback using EmailJS.
  * @param {Event} event - The form submission event.
  */
-    function sendFeedback(event) {
-        event.preventDefault();
-        const feedbackForm = document.getElementById("ratingForm");
-        const feedbackData = {
-            message: feedbackForm.feedback.value,
-        };
-    
+  function sendFeedback(event) {
+    event.preventDefault();
+    const feedbackForm = document.getElementById("ratingForm");
+    const feedbackMessage = feedbackForm.feedback.value.trim(); // Trim whitespace
+
+    if (feedbackMessage === "") {
+        alert("Feedback message cannot be empty.");
+        return; // Stop execution if the feedback message is empty
+    }
+
+    const feedbackData = {
+        message: feedbackMessage,
+    };
+
     // Initialize EmailJS
     emailjs.init("_ePANf65tKkhxY7nj");
 
