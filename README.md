@@ -1,4 +1,4 @@
-![](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/logo.png?raw=true)
+![Logo](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/logo.png?raw=true)
 # AnatomyMan
 
 # 1. UX
@@ -96,15 +96,25 @@ Testing is done to verify that the software behaves as expected and meets the sp
 ## Results
 ### Manual Function and Feature Testing
 #### selectRandomWord()
-* Ensure a word and hint are displayed.
-* Check if input fields for each letter of the word are generated.
+* Ensure a hint are displayed.
+* Ensure the word is not visible but input fields for each letter of the word are generated.
 * Verify that the hangman image is displayed.
-![]()
-![]()
+![HintDisplay](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/hintDisplayed.png?raw=true)
+![NewHintDisplay](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/hintDisplayed2.png?raw=true)
+![InputMatch](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/inputWorks.png?raw=true)
+
+* The above shots show that hints from the array guessList are diplayed, a new hint it displayed each round and that the word that matches the hint is not visible but is generated in the respective input elements. The empty hangman frame is also dsiplayed on the page before any guesses are made.
+
 #### displayHangman(incorrectGuesses):
 
 * Test with different values of incorrectGuesses (0 to 6).
 * Confirm that the correct hangman image is displayed for each value.
+![guess1](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess1.png?raw=true)
+![guess2](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess2.png?raw=true)
+![guess3](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess3.png?raw=true)
+![guess4](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess4.png?raw=true)
+![guess5](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess5.png?raw=true)
+![guess6]()
 
 #### handleInput(event):
 
