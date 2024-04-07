@@ -252,6 +252,7 @@ function handleGameOver() {
 /**
  * Displays the hangman image based on the number of incorrect guesses.
  * @param {number} incorrectGuesses - The number of incorrect guesses.
+ * Credit CodingNepal for basic concept of updating Hangman image and source for images.
  */
     function displayHangman(incorrectGuesses) {
         const hangmanImg = document.querySelector(".hangman-box img");
