@@ -210,6 +210,8 @@ To clone this project from Github:
 
 - Email.js for feedback [Chaoo Charles](https://www.youtube.com/watch?v=bMq2riFCF90)
 
+- Use of [JSDocs]https://jsdoc.app/tags-param
+
 ## Content
 - definitions used for the hints
 [USQ-Pressbooks](https://usq.pressbooks.pub/anatomy/back-matter/glossary/)

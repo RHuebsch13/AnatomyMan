@@ -88,6 +88,9 @@
     let totalCorrectGuesses = 0;
     let totalIncorrectGuesses = 0;
     
+ /**
+ * Selects a random word from the guessList array and sets up the game UI.
+ */
     function selectRandomWord() {
         if (guessedCorrectWords.length === guessList.length) {
             alert("Congratulations! You've guessed all words correctly. Start a new game.");
@@ -123,6 +126,10 @@
         displayHangman(incorrectGuesses);
     }
     
+/**
+ * Handles user input when a letter is guessed.
+ * @param {Event} event - The input event.
+ */
     function handleInput(event) {
         const enteredKey = event.data;
         const inputElement = event.target;
@@ -154,6 +161,10 @@
         }
     }
     
+/**
+ * Handles correct input (correctly guessed letter).
+ * @param {HTMLElement} target - The target input element.
+ */
     function handleCorrectInput(target) {
         target.setAttribute("id", "correct");
         target.disabled = true;
@@ -170,6 +181,11 @@
         }
     }
     
+/**
+ * Handles incorrect input (incorrectly guessed letter).
+ * @param {HTMLElement} target - The target input element.
+ * @param {string} incorrectLetter - The incorrectly guessed letter.
+ */
     function handleIncorrectInput(target, incorrectLetter) {
         incorrectGuesses++;
         displayHangman(incorrectGuesses);
@@ -179,7 +195,7 @@
             guessedIncorrectWords.push(target.dataset.letter);
         } else {
             target.value = incorrectLetter;
-            setTimeout(function() {
+            setTimeout(() => {
                 alert("Incorrect letter. Please try again.");
                 setTimeout(function() {
                     target.value = "";
@@ -188,6 +204,9 @@
         }
     }
     
+/**
+ * Handles a correct word guess.
+ */
     function handleCorrectGuess() {
         const selectedWord = Array.from(document.querySelectorAll(".game-word .letter")).map(input => input.dataset.letter).join('');
         guessedCorrectWords.push(selectedWord);
@@ -203,16 +222,37 @@
         }
     }
     
-    function handleGameOver() {
-        setTimeout(function() {
-            document.querySelector(".game-end").style.display = "flex";
-            document.querySelector(".game-end").style.justifyContent = "center";
-            document.querySelector(".game-end").style.alignItems = "center";
-            totalIncorrectGuesses++;
-            document.querySelector(".wrong-answers b").textContent = totalIncorrectGuesses;
-        }, 500);
-    }
+/**
+ * Displays the game over screen with the correct word.
+ * @param {string} word - The correct word.
+ */
+function displayGameOver(word) {
+    const gameOverElement = document.querySelector(".game-end");
+    const wordPlaceholder = gameOverElement.querySelector("b");
+    wordPlaceholder.textContent = word;
+    gameOverElement.style.display = "flex";
+    gameOverElement.style.justifyContent = "center";
+    gameOverElement.style.alignItems = "center";
+}
+
+/**
+ * Handles the game over scenario.
+ */
+function handleGameOver() {
+    setTimeout(() => {
+        const selectedWord = Array.from(document.querySelectorAll(".game-word .letter")).map(input => input.dataset.letter).join('');
+        guessedIncorrectWords.push(selectedWord);
+        displayGameOver(selectedWord);
+        totalIncorrectGuesses++;
+        document.querySelector(".wrong-answers b").textContent = totalIncorrectGuesses;
+    }, 500);
+}
+
     
+/**
+ * Displays the hangman image based on the number of incorrect guesses.
+ * @param {number} incorrectGuesses - The number of incorrect guesses.
+ */
     function displayHangman(incorrectGuesses) {
         const hangmanImg = document.querySelector(".hangman-box img");
         hangmanImg.setAttribute("src", `assets/images/hangman-${incorrectGuesses}.svg`);
@@ -220,7 +260,7 @@
     document.addEventListener("DOMContentLoaded", function() {
     selectRandomWord();
     });
-    
+
     document.querySelectorAll(".new-round").forEach(function(button) {
         button.addEventListener("click", function() {
             document.querySelector(".game-end").style.display = "none";
@@ -229,18 +269,19 @@
         });
     });
     
+   //Starts a new round of the game.
     function newRound() {
-        document.querySelector(".game-yay").style.display = "none";
-        incorrectGuesses = 0;
-        displayHangman(incorrectGuesses);
-        const letterInputs = document.querySelectorAll(".game-word .letter");
-        letterInputs.forEach(function(input) {
-            input.removeAttribute("id");
-            input.disabled = false;
-            input.value = "";
-            input.dataset.guessedLetters = "";
-        });
-    }
+    document.querySelector(".game-yay").style.display = "none";
+    incorrectGuesses = 0;
+    displayHangman(incorrectGuesses);
+    const letterInputs = document.querySelectorAll(".game-word .letter");
+    letterInputs.forEach(input => {
+        input.removeAttribute("id");
+        input.disabled = false;
+        input.value = "";
+        input.dataset.guessedLetters = "";
+    });
+}
     
     document.querySelector(".reset").addEventListener("click", function() {
         const confirmed = window.confirm("Are you sure you want to start a new game?");
@@ -257,14 +298,20 @@
         }
     });
     
-    // Function to update the rating display
+/**
+ * Updates the star rating based on user selection.
+ * @param {number} rating - The selected rating.
+ */
     function rateStar(rating) {
         currentRating = rating;
         highlightStars(rating);
         updateFeedbackBox(rating);
     }
     
-    // Function to highlight the star ratings based on user selection
+/**
+ * Highlights the star ratings based on the selected rating.
+ * @param {number} rating - The selected rating.
+ */
     function highlightStars(rating) {
         const stars = document.getElementsByClassName("fa-star");
         for (let i = 0; i < stars.length; i++) {
@@ -272,7 +319,10 @@
         }
     }
     
-    // Function to update the feedback box with the selected rating
+/**
+ * Updates the feedback box with the selected rating.
+ * @param {number} rating - The selected rating.
+ */
     function updateFeedbackBox(rating) {
         let ratingText = rating + " star"; 
         if (rating !== 1) {
@@ -281,7 +331,10 @@
         document.getElementById("ratingInput").value = ratingText;
     }
     
-    // Function to handle form submission
+ /**
+ * Sends feedback using EmailJS.
+ * @param {Event} event - The form submission event.
+ */
     function sendFeedback(event) {
         event.preventDefault();
         const feedbackForm = document.getElementById("ratingForm");
@@ -302,6 +355,11 @@
     function handleFeedbackSuccess() {
         alert("Feedback submitted successfully!");
         document.getElementById("ratingForm").reset(); // Reset the form after successful submission
+
+        const stars = document.getElementsByClassName("fa-star");
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].classList.remove("checked");
+        }
     }
     
     // Function to handle failed feedback submission

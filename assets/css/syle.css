@@ -4,12 +4,10 @@
 
 .navbar-brand {
     font-weight: 900;
-    
 }
 
 .nav-item {
-    font-weight: 700;
-    
+    font-weight: 700;  
 }
 
 .navbar-nav .nav-item a.nav-link:hover {
@@ -107,12 +105,12 @@ credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and 
     height: auto;
     margin: 0 auto;
     background-color: #ed3833;
-    padding: 20px; /* Add padding to provide space inside the div */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 20px; 
+    box-sizing: border-box; 
 }
 
 #objectives p {
-    margin: 0; /* Remove default margins to prevent unexpected spacing */
+    margin: 0; 
 }
 
 #rules {
@@ -240,7 +238,7 @@ credit to CodingNepal, styling based from "Build A Hangman Game in HTML CSS and 
 
 @media only screen and (min-width: 426px) {
     #rules {
-        margin-top: 20px; /* Add margin to create space between #objectives and #rules on screens larger than 425px */
+        margin-top: 20px; 
     }
 }
 
