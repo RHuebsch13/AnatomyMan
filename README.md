@@ -92,13 +92,15 @@ line 142 - 229 pop-ups
 line 231 media queries
 
 # 4. Testing
+Testing is done to verify that the software behaves as expected and meets the specified requirements. There are two types of testing, both are undertaken in this project: Manual testing involves human testers executing test cases for verification, while Automation testing involves the use of automation tools to execute tests. Jest is an example of such tools.
 ## Results
-### Manual Function  and Feature Testing
+### Manual Function and Feature Testing
 #### selectRandomWord()
 * Ensure a word and hint are displayed.
 * Check if input fields for each letter of the word are generated.
 * Verify that the hangman image is displayed.
-
+![]()
+![]()
 #### displayHangman(incorrectGuesses):
 
 * Test with different values of incorrectGuesses (0 to 6).
