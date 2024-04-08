@@ -94,9 +94,9 @@ line 231 media queries
 # 4. Testing
 Testing is done to verify that the software behaves as expected and meets the specified requirements. There are two types of testing, both are undertaken in this project: Manual testing involves human testers executing test cases for verification, while Automation testing involves the use of automation tools to execute tests. Jest is an example of such tools.
 ## Results
-### Manual Function and Feature Testing
+### Manual Testing
 #### selectRandomWord()
-* Ensure a hint are displayed.
+* Ensure hints are displayed.
 * Ensure the word is not visible but input fields for each letter of the word are generated.
 * Verify that the hangman image is displayed.
 ![HintDisplay](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/hintDisplayed.png?raw=true)
@@ -174,15 +174,15 @@ Testing is done to verify that the software behaves as expected and meets the sp
 
 #### sendFeedback(event):
 
-* Test with a valid feedback message.
 * Verify if feedback is submitted successfully.
 * Confirm if the form is reset after successful submission.
-* Test with an invalid feedback message (e.g., empty message).
-* Ensure an appropriate error message is displayed.
-* Confirm that the form remains unchanged.
-![successful]()
-![failed]()
+* Ensure an error message is displayed, if feedback form is empty.
+* Confirm that the form remains unchanged once reset.
+![successful](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/successfulSubmit.png?raw=true)
+![failed](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/failSubmit.png?raw=true)
+![error](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/errorSubmit.png?raw=true)
 
+* If the message is submitted successfully to the gmail using Email.js, the user will see a "sucessfully sent" message. If the message could not be sent i.e network failure, the user will see a "failure to send, try again later" message. If the user tries to submit an empty message, an error message will appear. The form performs in an expected way.
 
 ## Validation Tests
 - Code passed all validation tests on w3c validator and w3c CSS validator.
@@ -197,6 +197,7 @@ Testing is done to verify that the software behaves as expected and meets the sp
 - [Instructions.html-Mobile](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseMobileInstruct.pdf)
 
 ## Bug Problems
+
 
 # 5. Deployment
 This project was developed using codeanywhere and VS code IDE, commited to Git and pushed to GitHub.
