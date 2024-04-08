@@ -207,20 +207,21 @@
 /**
  * Handles a correct word guess.
  */
-    function handleCorrectGuess() {
-        const selectedWord = Array.from(document.querySelectorAll(".game-word .letter")).map(input => input.dataset.letter).join('');
-        guessedCorrectWords.push(selectedWord);
-        totalCorrectGuesses++;
-        document.querySelector(".right-answers b").textContent = totalCorrectGuesses;
-        selectRandomWord();
-        if (guessedCorrectWords.length === guessList.length) {
-            alert("Congratulations! You've guessed all words correctly. Start a new game.");
-        } else {
-            document.querySelector(".game-yay").style.display = "flex";
-            document.querySelector(".game-yay").style.justifyContent = "center";
-            document.querySelector(".game-yay").style.alignItems = "center";
-        }
+function handleCorrectGuess() {
+    const selectedWord = Array.from(document.querySelectorAll(".game-word .letter")).map(input => input.dataset.letter).join('');
+    guessedCorrectWords.push(selectedWord);
+    totalCorrectGuesses++;
+    document.querySelector(".right-answers b").textContent = totalCorrectGuesses;
+    selectRandomWord();
+    if (guessedCorrectWords.length === guessList.length) {
+        alert("Congratulations! You've guessed all words correctly. Start a new game.");
+    } else {
+        const gameYayElement = document.querySelector(".game-yay");
+        gameYayElement.style.display = "flex";
+        gameYayElement.style.justifyContent = "center";
+        gameYayElement.style.alignItems = "center";
     }
+}
     
 /**
  * Displays the game over screen with the correct word.
