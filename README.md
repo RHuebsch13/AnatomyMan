@@ -14,16 +14,22 @@ The user will have easy access to the website features, including an informative
 
 ## User Stories
 As a visiting user, I would like to access the instructions so that I know the game rules.
+* 'How to Play' page avaiable to user to view. Includes instructions and game objectives.
 
 As a visiting user, I would like to keep track of my incorrect and correct answers.
+* Updating scores displayed. Shows a score for both incorrect answers and correct answers.
 
-As a visiting user, I would like to have send feedbak about my user experience.
+As a visiting user, I would like to have send feedback about my user experience.
+* Feedback form at the button of 'How to play' with interactive star rating.
 
 As a visiting user, I would like to have a clear understanding of which letters are correct/incorrect.
+* Correct letters turn green and can not be removed.
 
 As a visiting user, I would like to have access to hints if I struggle to find the word.
+* A hint is displayed.
 
 As a visiting user, I would like to know how many attempts I have left to guess the word.
+* The hangman noose will update until a fully drawn stickman is visible, this means the game is over.
 
 ## Design choices
 The design aims to be visually appealing, with an interface that is simple. The color scheme reflects retro arcade colours that are fun and bright. Colour change is used to notify the user when letters are correct, these correct letters will also be disabled. GoodUI was comsulted to help the project follow common and consistent UI/UX conventions. Only High-quality images are used to ensure a positive user experience.  All design choices are made to create an easy to use and easy to naviagte website. The webpage has a traditional 2 page layout with continuity in terms of navbar and content layout. All of these elements remain in the same place on each page. This makes the site easy to learn, use and navigation for the user.
@@ -197,8 +203,53 @@ Testing is done to verify that the software behaves as expected and meets the sp
 - [Instructions.html-Mobile](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseMobileInstruct.pdf)
 
 ## Bug Problems
+1. Intially used divs instead of input fields. This presented with incorrect input detection. However, using input fields means that users can directly type letters using their keyboard without needing any additional event handling or JavaScript code to capture input. Switching to input fields allowed for a less bulky code. Input fields can also have built-in validation; max-length, only characters from a-z etc. As well as, providing a clearer user expectation because the input fields act as clear direction to the user that they should input something.
 
+2. Input fields were allowing multiple characters per field. The below line of code needed to be added:
+```
+inputElement.maxLength = 1;
+```
 
+3. If the user has used all 6 guesses, the correct word was not displaying on the Game Over pop-up. Code has been updated so the content of the b element will be filled with the word that was not guessed.
+```
+function displayGameOver(word) {
+    const gameOverElement = document.querySelector(".game-end");
+    const wordPlaceholder = gameOverElement.querySelector("b");
+    wordPlaceholder.textContent = word;
+    gameOverElement.style.display = "flex";
+    gameOverElement.style.justifyContent = "center";
+    gameOverElement.style.alignItems = "center";
+}
+
+function handleGameOver() {
+    setTimeout(() => {
+        const selectedWord = Array.from(document.querySelectorAll(".game-word .letter")).map(input => input.dataset.letter).join('');
+        guessedIncorrectWords.push(selectedWord);
+        displayGameOver(selectedWord);
+        totalIncorrectGuesses++;
+        document.querySelector(".wrong-answers b").textContent = totalIncorrectGuesses;
+    }, 500);
+}
+```
+4. Stars in the feedback form were not clearing after form has been submitted. Code has been added to the handleFeedbackSuccess() to clear the input.
+```
+    // Clear the stars
+    const stars = document.getElementsByClassName("fa-star");
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove("checked");
+    }
+```
+5. Empty feedback form submits and gets a "successfully sent" message. Code has been added to the handleFeedbackSuccess() display an error message.
+```
+const stars = document.getElementsByClassName("fa-star");
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove("checked");
+    }
+```
+6. When more than one star is selected, no "s" was added to "star" in the feedback field. Code was added to the updateFeedbackBox(rating) function.
+```
+ratingText += "s"; 
+```
 # 5. Deployment
 This project was developed using codeanywhere and VS code IDE, commited to Git and pushed to GitHub.
 To deploy this page to GitHub pages from its repository:
