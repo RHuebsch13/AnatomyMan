@@ -9,7 +9,7 @@ Identified key user personas, ie. People who study anatomy, the body, and how it
 The goals of this project are to produce a fun, interactive game that gives users a different way to continue to learn. It also aims to help the user practice terminology and spelling of various terms used in the field of anatomy.
 
 ## User Goals
-The user will have easy access to the website features, including an informative instructions page and a interactive hangman game. To further user interaction, there is a star rating feedback form that user may communicate with the developers. To achieve responsive design; flexible layouts and a mobile first approach will be used to extended acessiblity to as many screens as possible.
+The user will have easy access to the website features, including an informative instructions page and a interactive hangman game. To further user interaction, there is a star rating feedback form where users may communicate with the developers. To achieve responsive design; flexible layouts and a mobile first approach is used to extend acessiblity to as many screens as possible.
 
 
 ## User Stories
@@ -19,38 +19,38 @@ As a visiting user, I would like to access the instructions so that I know the g
 As a visiting user, I would like to keep track of my incorrect and correct answers.
 * Updating scores displayed. Shows a score for both incorrect answers and correct answers.
 
-As a visiting user, I would like to have send feedback about my user experience.
+As a visiting user, I would like to send feedback about my user experience.
 * Feedback form at the button of 'How to play' with interactive star rating.
 
 As a visiting user, I would like to have a clear understanding of which letters are correct/incorrect.
 * Correct letters turn green and can not be removed.
 
-As a visiting user, I would like to have access to hints if I struggle to find the word.
-* A hint is displayed.
+As a visiting user, I would like to have access to hints when I struggle to find the word.
+* A hint is displayed and easy to see, in an attention-catching div.
 
 As a visiting user, I would like to know how many attempts I have left to guess the word.
 * The hangman noose will update until a fully drawn stickman is visible, this means the game is over.
 
 ## Design choices
-The design aims to be visually appealing, with an interface that is simple. The color scheme reflects retro arcade colours that are fun and bright. Colour change is used to notify the user when letters are correct, these correct letters will also be disabled. GoodUI was comsulted to help the project follow common and consistent UI/UX conventions. Only High-quality images are used to ensure a positive user experience.  All design choices are made to create an easy to use and easy to naviagte website. The webpage has a traditional 2 page layout with continuity in terms of navbar and content layout. All of these elements remain in the same place on each page. This makes the site easy to learn, use and navigation for the user.
+The design aims to be visually appealing, with an interface that is simple. The color scheme reflects retro arcade colours that are fun and bright. Colour change is used to notify the user when letters are correct, these correct letters will also be disabled. GoodUI was comsulted to help the project follow common and consistent UI/UX conventions. Only high-quality images are used to ensure a positive user experience.  All design choices are made to create an easy to use and easy to naviagte website. The webpage has a traditional 2 page layout with continuity in terms of navbar and content layout. All of these common elements remain in the same place on each page. This makes the site easy to learn, use and navigation for the user.
 
 
 ### Fonts
 Raleway is used throughout the webpage. It is a sans-serif font with thin, font-weight lines and large letter spacing. It creates a comfortable reading experience that matches the overall feel of the page, without compromising page space.
 
 ### Colours
-This colour scheme draws on the iconic era of arcade games and employs the retro colours to engage the user. They are bright and happy colours and brings a theme of fun to the page.
+This colour scheme draws on the iconic era of arcade games and employs the retro colours to engage the user. They are bright and happy colours and bring a theme of fun to the page.
 
 ![colour scheme](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/colors.png?raw=true)
 
 ### Styling
-The nav bar is clear and easy to see, the logo "anatomyman" fits in the navbar. The focal point of the page is the interactive game space. This space is made up of two divs that contribute to the user experience of the game. The classic empty handman noose, letter input squares and the hint box share the space. The instruction page is simply laid out to allow for quick and easy reading to help the user learn how to play. A feedback form is under the instructions and uses a star rating which can be sent to a developer email. This is using EmailJS. The feedback form can be edited so that the user can insert comments with or instead of the star rating.
+The nav bar is clear and easy to see, the logo "anatomyman" is clearly displayed. The focal point of the page is the interactive game space. This space is made up of two divs that contribute to the user experience of the game. The classic empty handman noose, letter input squares and the hint box share the space. The instruction page is simply laid out to allow for quick and easy reading to help the user learn how to play. A feedback form is under the instructions and uses a star rating which can be sent to a developer email. This is using EmailJS. The feedback form can be edited so that the user can insert comments with or instead of the star rating.
 
 ### Backgrounds
 The design choice of one solid background colour was made to maintain accessibility for the user. Solid colours were used to make the content stand out.
  
 ### Content
-Instructions that guide the user to play the game so the rules are understood and there is no confusion. There are letter input spaces that will work with the users' keyboard. There is a progressive hangman image that updates as the user gets answers wrong, to eventually reach the well-known fully drawn hanged man. There is a star rating feedback. 
+Instructions that guide the user to play the game so the rules are understood and there is no confusion. There are letter input spaces that will work with the users' keyboard. There is a progressive hangman image that updates as the user gets answers wrong, to eventually reach the well-known fully drawn hanged man. And updating tallying scores for both correct and incorrect answers. Several pop-ups and alerts that are used to guide the user through the game. There is a star rating feedback. 
 
 ## Wireframes
 Designed in balsamiq, there are 3 wireframes for each page. Providing planned layout and views on large screens, medium screens and small screens.
@@ -65,7 +65,7 @@ Designed in balsamiq, there are 3 wireframes for each page. Providing planned la
 # 2. Features
 
 ## Existing Features
- * Navbar dropdown: this only becomes visible when the screen real-estate is less than 768px, making the navbar easily accessible even on a smaller screen. Showing the ability to prioritizing content and features for smaller screens while maintaining a seamless user experience. The purpose of this is to ensure that the website will work for as many people as possible across as many different devices as possible.
+* Navbar dropdown: this only becomes visible when the screen real-estate is less than 768px, making the navbar easily accessible even on a smaller screen. Showing the ability to prioritizing content and features for smaller screens while maintaining a seamless user experience. The purpose of this is to ensure that the website will work for as many people as possible across as many different devices as possible.
 
 * Instructions on how the game works.
 
@@ -74,6 +74,8 @@ Designed in balsamiq, there are 3 wireframes for each page. Providing planned la
 * Interactive input letters the user will interact with to find the word. Letters put in the input boxes that are correct will be disbaled and change in colour.
 
 * Interactive star rating that can be sent to the developer by emailJS.
+
+* Pop-ups and alerts to inform the user of the consequences of their activity. i.e got the word correct, ran out of guesses and got the word wrong, the letter entered was right/wrong, the letter entered has already been entered etc.
 
 
 ## Left to Implement
@@ -87,15 +89,15 @@ HTML, CSS, JavaScript, Bootstrap, jQuery JavaScript library, EmailJS.
 
 CSS styling is applied as:
 
-line 1 - 17 navbar
+line 1 navbar
 
-line 26 - 90 index.html
+line 26 index.html
 
-line 92 - 138 instructions.html
+line 92 instructions.html
 
-line 142 - 229 pop-ups
+line 149 pop-ups/buttons
 
-line 231 media queries
+line 239 media queries
 
 # 4. Testing
 Testing is done to verify that the software behaves as expected and meets the specified requirements. There are two types of testing, both are undertaken in this project: Manual testing involves human testers executing test cases for verification, while Automation testing involves the use of automation tools to execute tests. Jest is an example of such tools.
@@ -109,7 +111,7 @@ Testing is done to verify that the software behaves as expected and meets the sp
 ![NewHintDisplay](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/hintDisplayed2.png?raw=true)
 ![InputMatch](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/inputWorks.png?raw=true)
 
-* The above shots show that hints from the array guessList are diplayed, a new hint it displayed each round and that the word that matches the hint is not visible but is generated in the respective input elements. The empty hangman frame is also dsiplayed on the page before any guesses are made.
+* The above shots show that hints from the array guessList are diplayed, a new hint is displayed in each round and that the word that matches the hint is not visible but is generated in the respective input elements. The empty hangman frame is also dsiplayed on the page before any guesses are made.
 
 #### displayHangman(incorrectGuesses):
 
@@ -146,7 +148,7 @@ Testing is done to verify that the software behaves as expected and meets the sp
 ![guess1](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/guess1.png?raw=true)
 ![gameOver](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/gameOver.png?raw=true)
 
-* As shown above; if the letter is correct, the letter will go green and can not be removed as the letter has been successfully disabled. If the letter is incorrect, a pop-up will appear to inform the user of this and the hangman image updates accordingly. If the user enters the same letter more than once in the same input field, a pop-up informin the user of this will be displayed. The input is cleared after the user closes the pop-up. A new word is selected if the word is guessed correctly. The score updates as expected. The game over message will show if the user makes 6 incorrect guesses.
+* As shown above; if the letter is correct, the letter will go green and can not be removed as the letter has been successfully disabled. If the letter is incorrect, a pop-up will appear to inform the user of this and the hangman image updates accordingly. If the user enters the same letter more than once in the same input field, a pop-up informing the user of this will be displayed. The input is cleared after the user closes the pop-up. A new word is selected if the word is guessed correctly/incorrectly. If the word is not guessed correctly before reaching max guesses(6), the correct answer is successfully displayed in the game-over message. The score updates as expected. 
 
 #### newRound():
 
@@ -176,7 +178,7 @@ Testing is done to verify that the software behaves as expected and meets the sp
 ![5stars](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star5.png?raw=true)
 ![ownFeedback](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/star5Own.png?raw=true)
 
-* The above shots validate both the rateStar function and the highlightstar function. Stars highlight as expected and the feedback box updates as expected. The user is able to delete the populated text and add their own comments. These feedback responses are sucessfully sent to a gmail account the developer can access. This is done with Email.JS. 
+* The above shots validate both the rateStar function and the highlightstar function. Stars highlight as expected, from 0-5 and the feedback box updates as expected. The user is able to add their own comments along with the star rating or delete the poplated star rating and send only their own input. These feedback responses are sucessfully sent to a gmail account the developer can access. This is done with Email.JS. 
 
 #### sendFeedback(event):
 
@@ -303,6 +305,10 @@ To clone this project from Github:
 - Email.js for feedback [Chaoo Charles](https://www.youtube.com/watch?v=bMq2riFCF90)
 
 - Use of [JSDocs]https://jsdoc.app/tags-param
+
+- Use of trim()[w3schools](https://www.w3schools.com/jsref/jsref_trim_string.asp)
+
+- How to clear input fields [w3schools](https://www.w3schools.com/howto/howto_html_clear_input.asp)
 
 ## Content
 - definitions used for the hints
