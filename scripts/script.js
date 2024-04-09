@@ -328,7 +328,7 @@ function handleGameOver() {
     function updateFeedbackBox(rating) {
         let ratingText = rating + " star"; 
         if (rating !== 1) {
-            ratingText += "s"; // For plural if rating is not 1
+            ratingText += "s"; 
         }
         document.getElementById("ratingInput").value = ratingText;
     }
@@ -363,7 +363,7 @@ function handleGameOver() {
     // Function to handle successful feedback submission
     function handleFeedbackSuccess() {
         alert("Feedback submitted successfully!");
-        document.getElementById("ratingForm").reset(); // Reset the form after successful submission
+        document.getElementById("ratingForm").reset(); 
 
         const stars = document.getElementsByClassName("fa-star");
         for (let i = 0; i < stars.length; i++) {
