@@ -191,10 +191,11 @@ Testing is done to verify that the software behaves as expected and meets the sp
 * If the message is submitted successfully to the gmail using Email.js, the user will see a "sucessfully sent" message. If the message could not be sent i.e network failure, the user will see a "failure to send, try again later" message. If the user tries to submit an empty message, an error message will appear. The form performs in an expected way.
 
 ## Validation Tests
-- Code passed all validation tests on w3c validator and w3c CSS validator.
+- Code passed all validation tests on w3c validator, w3c CSS validator and jshint JS validator.
   - [CSS Validation](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/CSSval.png?raw=true)
   - [Index.html](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/HTMLvalHome.png?raw=true)
   - [Instructions.html](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/HTMLvalInstruct.png?raw=true)
+  - [JavaScript](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/JSval.png?raw=true)
 
 ## Lighthouse Testing
 - [Index.html-Desktop](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseDesktopHome.pdf)
