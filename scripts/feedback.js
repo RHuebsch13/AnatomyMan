@@ -75,3 +75,4 @@ function handleFeedbackFailure() {
     alert("Failed to submit feedback. Please try again later.");
 }
 
+module.exports = { updateFeedbackBox };

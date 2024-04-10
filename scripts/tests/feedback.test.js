@@ -1,5 +1,5 @@
 // Import the function to test
-import { updateFeedbackBox } from '../feedback.js';
+const { updateFeedbackBox } = require('../feedback.js');
 
 // Mock the document element
 document.body.innerHTML = `
@@ -15,6 +15,7 @@ describe('updateFeedbackBox function', () => {
         expect(document.getElementById('ratingInput').value).toBe('3 stars');
     });
 });
+
 
 
 
