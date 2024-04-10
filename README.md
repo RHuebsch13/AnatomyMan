@@ -192,12 +192,16 @@ Testing is done to verify that the software behaves as expected and meets the sp
 
 * If the message is submitted successfully to the gmail using Email.js, the user will see a "sucessfully sent" message. If the message could not be sent i.e network failure, the user will see a "failure to send, try again later" message. If the user tries to submit an empty message, an error message will appear. The form performs in an expected way.
 
+### Automation test
+There an automation test written for only one function in this project, as to demonstrate the difference between manual testing and automation testing. This test uses jest to check that the updateFeedbackBox function meets requirements. 
+Red-Green-Refactor was used where Red: Write a failing test case, Green: Once a failing test case is achieved, write the code necessary to make that test pass and finally, Refactor: After the test has passed, refactor the code to improve its design, readability, and performance, making sure all tests continue to pass. This is done in feedback.test.js.
+
 ## Validation Tests
 - Code passed all validation tests on w3c validator, w3c CSS validator and jshint JS validator.
   - [CSS Validation](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/CSSval.png?raw=true)
   - [Index.html](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/HTMLvalHome.png?raw=true)
   - [Instructions.html](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/HTMLvalInstruct.png?raw=true)
-  - [JavaScript](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/JSval.png?raw=true)
+  - [All-JavaScript](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/JSval.png?raw=true)
 
 ## Lighthouse Testing
 - [Index.html-Desktop](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/lighthouseDesktopHome.pdf)
@@ -253,6 +257,16 @@ const stars = document.getElementsByClassName("fa-star");
 ```
 ratingText += "s"; 
 ```
+7. Automation test bug - when the export statement was added to feedback.js file, the function would stop working. 
+```
+const { updateFeedbackBox } = require('../feedback.js');
+```
+The import statement in the test file was changed as above.
+
+```
+module.exports = { updateFeedbackBox };
+```
+The export statement was modify like so. Now, the test passes and the code maintains function.
 # 5. Deployment
 This project was developed using codeanywhere and VS code IDE, commited to Git and pushed to GitHub.
 To deploy this page to GitHub pages from its repository:
@@ -309,6 +323,12 @@ To clone this project from Github:
 - Use of trim()[w3schools](https://www.w3schools.com/jsref/jsref_trim_string.asp)
 
 - How to clear input fields [w3schools](https://www.w3schools.com/howto/howto_html_clear_input.asp)
+
+- Import statement for automation test [github-repo](https://github.com/Code-Institute-Solutions/Jest_Testing_Part2/blob/main/04_advanced_tests_1/scripts/tests/game.test.js)
+
+- Debugging automation test: Thomas from tutor assistance 
+
+- General assistance: Rohit Sharma (Mentor)
 
 ## Content
 - definitions used for the hints
