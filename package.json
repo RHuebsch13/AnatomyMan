@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.17.0",
+    "@babel/preset-typescript": "^7.17.0",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7",
+    "jest-environment-jsdom": "^27.4.7",
+    "jsdom": "^18.0.0"
+  },
+  "name": "anatomyman-1",
+  "description": "![Logo](https://github.com/RHuebsch13/AnatomyMan/blob/main/docs/logo.png?raw=true)\r # AnatomyMan",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "preset": "./jest-preset.js",
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}
+
+
